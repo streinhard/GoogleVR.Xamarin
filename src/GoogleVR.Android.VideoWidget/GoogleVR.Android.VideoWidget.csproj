@@ -52,13 +52,18 @@
     <TransformFile Include="Transforms\Metadata.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\sdk-videowidget-1.170.0.aar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GoogleVR.Android.CommonWidget\GoogleVR.Android.CommonWidget.csproj">
       <Project>{D3F13B00-14E8-490D-B845-93B293B42E89}</Project>
       <Name>GoogleVR.Android.CommonWidget</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Jars\" />
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="..\..\externals\gvr-android-sdk-1.170\libraries\sdk-videowidget-1.170.0.aar">
+      <Link>Jars\sdk-videowidget-1.170.0.aar</Link>
+    </LibraryProjectZip>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>

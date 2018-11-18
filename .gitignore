@@ -5,6 +5,8 @@
 [Oo]bj/
 [Bb]in/
 packages/
+externals/
+tools/
 TestResults/
 
 # globs

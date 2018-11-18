@@ -61,7 +61,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\sdk-panowidget-1.170.0.aar" />
+    <LibraryProjectZip Include="..\..\externals\gvr-android-sdk-1.170\libraries\sdk-panowidget-1.170.0.aar">
+      <Link>Jars\sdk-panowidget-1.170.0.aar</Link>
+    </LibraryProjectZip>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>
