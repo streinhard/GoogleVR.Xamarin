@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <remove-node path="/api/package[@name='com.google.common.logging.nano']" />
+    <remove-node path="/api/package[@name='com.google.vr.sdk.proto.nano']" />
+    <remove-node path="/api/package[@name='com.google.vr.audio']" />
+    <remove-node path="/api/package[@name='com.google.vr.cardboard']" />
+    <remove-node path="/api/package[@name='com.google.vr.cardboard.annotations']" />
+    <remove-node path="/api/package[@name='com.google.vr.ndk.base']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.base.api']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.common.api']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.controller.api']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.library.api']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.logging.api']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.performance.api']" />
+    <remove-node path="/api/package[@name='com.google.vr.vrcore.controller.api.nano']" />
+    <remove-node path="/api/package[@name='com.google.vrtoolkit.cardboard']" />
+    <remove-node path="/api/package[@name='logs.proto.wireless.performance.mobile.nano']" />
+</metadata>
