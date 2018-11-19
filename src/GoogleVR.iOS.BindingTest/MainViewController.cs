@@ -1,10 +1,14 @@
 ﻿using System;
 using CoreGraphics;
 using UIKit;
+
 namespace GoogleVR.iOS.BindingTest
 {
     public class MainViewController : UIViewController
     {
+        UIButton videoButton;
+        UIButton panoButton;
+
         public MainViewController()
         {
             Title = "Google VR";
@@ -18,17 +22,23 @@ namespace GoogleVR.iOS.BindingTest
 
             NavigationItem.BackBarButtonItem = new UIBarButtonItem("", UIBarButtonItemStyle.Plain, null);
 
-            var videoButton = new UIButton(UIButtonType.System);
+            videoButton = new UIButton(UIButtonType.System);
             videoButton.SetTitle("Video", UIControlState.Normal);
             videoButton.TouchUpInside += ShowVideo;
-            videoButton.Frame = new CGRect(0, 100, View.Frame.Width, 50);
             View.Add(videoButton);
 
-            var panoButton = new UIButton(UIButtonType.System);
+            panoButton = new UIButton(UIButtonType.System);
             panoButton.SetTitle("Panorama", UIControlState.Normal);
             panoButton.TouchUpInside += ShowPanorama;
-            panoButton.Frame = new CGRect(0, 150, View.Frame.Width, 50);
             View.Add(panoButton);
+        }
+
+        public override void ViewWillLayoutSubviews()
+        {
+            base.ViewWillLayoutSubviews();
+
+            videoButton.Frame = new CGRect(0, 100, View.Frame.Width, 50);
+            panoButton.Frame = new CGRect(0, 150, View.Frame.Width, 50);
         }
 
         private void ShowVideo(object sender, EventArgs e)

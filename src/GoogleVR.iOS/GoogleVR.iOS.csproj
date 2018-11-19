@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5695B7D-B62A-4284-83A1-E05760EA92FE}</ProjectGuid>
+    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GoogleVR.iOS</RootNamespace>
+    <AssemblyName>GoogleVR.iOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LinkDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="Structs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="..\..\externals\gvr-ios-sdk-1.170.0\Libraries\libGVRSDK.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+    <NativeReference Include="libGTMSessionFetcher.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\arrowRight.png">
+      <Link>Resources\arrowRight.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\cardboardLogotype.png">
+      <Link>Resources\cardboardLogotype.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\continueButton.png">
+      <Link>Resources\continueButton.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\gearButton.png">
+      <Link>Resources\gearButton.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_back_ios_white.png">
+      <Link>Resources\ic_arrow_back_ios_white.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_back_ios_white%402x.png">
+      <Link>Resources\ic_arrow_back_ios_white%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_back_ios_white%403x.png">
+      <Link>Resources\ic_arrow_back_ios_white%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_back_white%401x.png">
+      <Link>Resources\ic_arrow_back_white%401x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_back_white%402x.png">
+      <Link>Resources\ic_arrow_back_white%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_back_white%403x.png">
+      <Link>Resources\ic_arrow_back_white%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_forward.png">
+      <Link>Resources\ic_arrow_forward.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_forward%402x.png">
+      <Link>Resources\ic_arrow_forward%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_forward%403x.png">
+      <Link>Resources\ic_arrow_forward%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_forward_ios_white.png">
+      <Link>Resources\ic_arrow_forward_ios_white.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_forward_ios_white%402x.png">
+      <Link>Resources\ic_arrow_forward_ios_white%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_arrow_forward_ios_white%403x.png">
+      <Link>Resources\ic_arrow_forward_ios_white%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_cardboard.png">
+      <Link>Resources\ic_cardboard.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_cardboard%402x.png">
+      <Link>Resources\ic_cardboard%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_cardboard%403x.png">
+      <Link>Resources\ic_cardboard%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_fullscreen.png">
+      <Link>Resources\ic_fullscreen.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_fullscreen%402x.png">
+      <Link>Resources\ic_fullscreen%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_fullscreen%403x.png">
+      <Link>Resources\ic_fullscreen%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_fullscreen_exit.png">
+      <Link>Resources\ic_fullscreen_exit.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_fullscreen_exit%402x.png">
+      <Link>Resources\ic_fullscreen_exit%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_fullscreen_exit%403x.png">
+      <Link>Resources\ic_fullscreen_exit%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_help.png">
+      <Link>Resources\ic_help.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_help%402x.png">
+      <Link>Resources\ic_help%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_help%403x.png">
+      <Link>Resources\ic_help%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_info.png">
+      <Link>Resources\ic_info.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_info%402x.png">
+      <Link>Resources\ic_info%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_info%403x.png">
+      <Link>Resources\ic_info%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_settings_white%401x.png">
+      <Link>Resources\ic_settings_white%401x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_settings_white%402x.png">
+      <Link>Resources\ic_settings_white%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ic_settings_white%403x.png">
+      <Link>Resources\ic_settings_white%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\qrSample%401x.png">
+      <Link>Resources\qrSample%401x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\qrSample%402x.png">
+      <Link>Resources\qrSample%402x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\qrSample%403x.png">
+      <Link>Resources\qrSample%403x.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\rotateInstructions.mp4">
+      <Link>Resources\rotateInstructions.mp4</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\tickmarks.png">
+      <Link>Resources\tickmarks.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ar.lproj\CardboardSDK.strings">
+      <Link>Resources\ar.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ca.lproj\CardboardSDK.strings">
+      <Link>Resources\ca.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\cs.lproj\CardboardSDK.strings">
+      <Link>Resources\cs.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\da.lproj\CardboardSDK.strings">
+      <Link>Resources\da.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\de.lproj\CardboardSDK.strings">
+      <Link>Resources\de.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\el.lproj\CardboardSDK.strings">
+      <Link>Resources\el.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\en.lproj\CardboardSDK.strings">
+      <Link>Resources\en.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\en_AU.lproj\CardboardSDK.strings">
+      <Link>Resources\en_AU.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\en_GB.lproj\CardboardSDK.strings">
+      <Link>Resources\en_GB.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\en_IN.lproj\CardboardSDK.strings">
+      <Link>Resources\en_IN.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\es.lproj\CardboardSDK.strings">
+      <Link>Resources\es.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\es_MX.lproj\CardboardSDK.strings">
+      <Link>Resources\es_MX.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\fi.lproj\CardboardSDK.strings">
+      <Link>Resources\fi.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\fr.lproj\CardboardSDK.strings">
+      <Link>Resources\fr.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\he.lproj\CardboardSDK.strings">
+      <Link>Resources\he.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\hi.lproj\CardboardSDK.strings">
+      <Link>Resources\hi.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\hr.lproj\CardboardSDK.strings">
+      <Link>Resources\hr.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\hu.lproj\CardboardSDK.strings">
+      <Link>Resources\hu.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\id.lproj\CardboardSDK.strings">
+      <Link>Resources\id.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\it.lproj\CardboardSDK.strings">
+      <Link>Resources\it.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\iw.lproj\CardboardSDK.strings">
+      <Link>Resources\iw.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ja.lproj\CardboardSDK.strings">
+      <Link>Resources\ja.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ko.lproj\CardboardSDK.strings">
+      <Link>Resources\ko.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\nb.lproj\CardboardSDK.strings">
+      <Link>Resources\nb.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\nl.lproj\CardboardSDK.strings">
+      <Link>Resources\nl.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\pl.lproj\CardboardSDK.strings">
+      <Link>Resources\pl.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\pt.lproj\CardboardSDK.strings">
+      <Link>Resources\pt.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\pt_PT.lproj\CardboardSDK.strings">
+      <Link>Resources\pt_PT.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ro.lproj\CardboardSDK.strings">
+      <Link>Resources\ro.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\ru.lproj\CardboardSDK.strings">
+      <Link>Resources\ru.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\sk.lproj\CardboardSDK.strings">
+      <Link>Resources\sk.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\sv.lproj\CardboardSDK.strings">
+      <Link>Resources\sv.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\th.lproj\CardboardSDK.strings">
+      <Link>Resources\th.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\tr.lproj\CardboardSDK.strings">
+      <Link>Resources\tr.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\uk.lproj\CardboardSDK.strings">
+      <Link>Resources\uk.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\vi.lproj\CardboardSDK.strings">
+      <Link>Resources\vi.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\zh_CN.lproj\CardboardSDK.strings">
+      <Link>Resources\zh_CN.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\zh_HK.lproj\CardboardSDK.strings">
+      <Link>Resources\zh_HK.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\externals\gvr-ios-sdk-1.170.0\Resources\CardboardSDK.bundle\zh_TW.lproj\CardboardSDK.strings">
+      <Link>Resources\zh_TW.lproj\CardboardSDK.strings</Link>
+    </BundleResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+</Project>

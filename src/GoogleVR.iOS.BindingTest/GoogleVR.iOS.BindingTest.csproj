@@ -23,11 +23,12 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>33043</IOSDebuggerPort>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchVerbosity></MtouchVerbosity>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -109,6 +110,16 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\GoogleCardboard.png" />
+    <BundleResource Include="Resources\test_2k_mono.jpg" />
+    <BundleResource Include="Resources\test_2k_stereo.jpg" />
+    <BundleResource Include="Resources\test_1080_stereo.mp4" />
+    <BundleResource Include="Resources\test_1920_mono.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleVR.iOS\GoogleVR.iOS.csproj">
+      <Project>{C5695B7D-B62A-4284-83A1-E05760EA92FE}</Project>
+      <Name>GoogleVR.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
