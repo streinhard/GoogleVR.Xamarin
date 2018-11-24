@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
+using Android.Net;
 using Com.Google.VR.Sdk.Widgets.Video;
 
 namespace GoogleVR.Android.BindingTest
@@ -25,18 +26,28 @@ namespace GoogleVR.Android.BindingTest
             _videoView.SetEventListener(new VideoEventListener(this));
 
             _seekBar.ProgressChanged += OnProgressChanged;
+
+            LoadVideoFromIntent();
         }
 
-        protected override void OnResume()
+        private void LoadVideoFromIntent()
         {
-            base.OnResume();
-
             var options = new VrVideoView.Options
             {
-                InputFormat = VrVideoView.Options.FormatDefault,
-                InputType = VrVideoView.Options.TypeMono
+                InputFormat = Intent.GetIntExtra(VrIntentExtras.VIDEO_FORMAT, VrVideoView.Options.FormatDefault),
+                InputType = Intent.GetIntExtra(VrIntentExtras.VIDEO_TYPE, VrVideoView.Options.TypeMono)
             };
-            _videoView.LoadVideoFromAsset("test_1920_mono.mp4", options);
+
+            if (Intent.HasExtra(VrIntentExtras.VIDEO_ASSET_NAME))
+            {
+                var asset_name = Intent.GetStringExtra(VrIntentExtras.VIDEO_ASSET_NAME);
+                _videoView.LoadVideoFromAsset(asset_name, options);
+            }
+            else if (Intent.HasExtra(VrIntentExtras.VIDEO_URL))
+            {
+                var video_uri = Uri.Parse(Intent.GetStringExtra(VrIntentExtras.VIDEO_URL));
+                _videoView.LoadVideo(video_uri, options);
+            }
         }
 
         private void OnProgressChanged(object sender, SeekBar.ProgressChangedEventArgs e)

@@ -4,16 +4,25 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:padding="10dp">
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/video_button"
-        android:text="Video" />
+        android:id="@+id/video_stereo"
+        android:text="Video Stereo 1080p" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/panorama_button"
-        android:text="Panorama" />
+        android:id="@+id/video_mono"
+        android:text="Video Mono 1920p" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/panorama_stereo"
+        android:text="Panorama Stereo 2K" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/panorama_mono"
+        android:text="Panorama Mono 2K" />
 </LinearLayout>

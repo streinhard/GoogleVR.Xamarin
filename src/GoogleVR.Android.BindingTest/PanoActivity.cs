@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Android.App;
 using Android.Graphics;
 using Android.OS;
@@ -18,21 +19,27 @@ namespace GoogleVR.Android.BindingTest
             SetContentView(Resource.Layout.Pano);
 
             panoramaView = FindViewById<VrPanoramaView>(Resource.Id.pano_view);
+
+            LoadPanoramaFromIntent();
         }
 
-        protected override void OnResume()
+        private void LoadPanoramaFromIntent()
         {
-            base.OnResume();
-
-            var andesStream = Assets.Open("test_2k_stereo.jpg");
-            var andesBitmap = BitmapFactory.DecodeStream(andesStream);
-
             var options = new VrPanoramaView.Options
             {
-                InputType = VrPanoramaView.Options.TypeStereoOverUnder
+                InputType = Intent.GetIntExtra(VrIntentExtras.IMAGE_TYPE, VrPanoramaView.Options.TypeMono)
             };
 
-            panoramaView.LoadImageFromBitmap(andesBitmap, options);
+            if (Intent.HasExtra(VrIntentExtras.IMAGE_ASSET_NAME))
+            {
+                var andesStream = Assets.Open(Intent.GetStringExtra(VrIntentExtras.IMAGE_ASSET_NAME));
+                var andesBitmap = BitmapFactory.DecodeStream(andesStream);
+                panoramaView.LoadImageFromBitmap(andesBitmap, options);
+            }
+            else if (Intent.HasExtra(VrIntentExtras.IMAGE_URL))
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
