@@ -18,6 +18,11 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/video_url"
+        android:text="Video from URL" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/panorama_stereo"
         android:text="Panorama Stereo 2K" />
     <Button
@@ -25,4 +30,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/panorama_mono"
         android:text="Panorama Mono 2K" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/panorama_url"
+        android:text="Panorama from URL" />
 </LinearLayout>

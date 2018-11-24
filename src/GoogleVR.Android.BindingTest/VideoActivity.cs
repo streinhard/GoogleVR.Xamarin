@@ -30,6 +30,20 @@ namespace GoogleVR.Android.BindingTest
             LoadVideoFromIntent();
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            _videoView.PlayVideo();
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+
+            _videoView.PauseVideo();
+        }
+
         private void LoadVideoFromIntent()
         {
             var options = new VrVideoView.Options
@@ -71,6 +85,11 @@ namespace GoogleVR.Android.BindingTest
             {
                 _activity._seekBar.Max = (int)_activity._videoView.Duration;
                 _activity._isPlaying = true;
+            }
+
+            public override void OnLoadError(string errorMessage)
+            {
+                Toast.MakeText(_activity, errorMessage, ToastLength.Long).Show();
             }
 
             public override void OnClick()

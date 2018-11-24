@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Graphics;
 using Android.OS;
@@ -11,19 +11,21 @@ namespace GoogleVR.Android.BindingTest
     [Activity]
     public class PanoActivity : AppCompatActivity
     {
-        private VrPanoramaView panoramaView;
+        private static readonly HttpClient _httpClient = new HttpClient();
+
+        private VrPanoramaView _panoramaView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Pano);
 
-            panoramaView = FindViewById<VrPanoramaView>(Resource.Id.pano_view);
+            _panoramaView = FindViewById<VrPanoramaView>(Resource.Id.pano_view);
 
-            LoadPanoramaFromIntent();
+            LoadPanoramaFromIntent().ConfigureAwait(false);
         }
 
-        private void LoadPanoramaFromIntent()
+        private async Task LoadPanoramaFromIntent()
         {
             var options = new VrPanoramaView.Options
             {
@@ -32,13 +34,16 @@ namespace GoogleVR.Android.BindingTest
 
             if (Intent.HasExtra(VrIntentExtras.IMAGE_ASSET_NAME))
             {
-                var andesStream = Assets.Open(Intent.GetStringExtra(VrIntentExtras.IMAGE_ASSET_NAME));
-                var andesBitmap = BitmapFactory.DecodeStream(andesStream);
-                panoramaView.LoadImageFromBitmap(andesBitmap, options);
+                var imageStream = Assets.Open(Intent.GetStringExtra(VrIntentExtras.IMAGE_ASSET_NAME));
+                var imageBitmap = BitmapFactory.DecodeStream(imageStream);
+                _panoramaView.LoadImageFromBitmap(imageBitmap, options);
             }
             else if (Intent.HasExtra(VrIntentExtras.IMAGE_URL))
             {
-                throw new NotImplementedException();
+                var imageUrl = Intent.GetStringExtra(VrIntentExtras.IMAGE_URL);
+                var imageStream = await _httpClient.GetStreamAsync(imageUrl);
+                var imageBitmap = await BitmapFactory.DecodeStreamAsync(imageStream);
+                _panoramaView.LoadImageFromBitmap(imageBitmap, options);
             }
         }
     }
