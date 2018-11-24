@@ -53,14 +53,14 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedReferenceJar Include="..\..\externals\protobuf-java-3.1.0.jar">
-      <Link>Jars\protobuf-java-3.1.0.jar</Link>
-    </EmbeddedReferenceJar>
-  </ItemGroup>
-  <ItemGroup>
     <LibraryProjectZip Include="..\..\externals\gvr-android-sdk-1.170\libraries\sdk-common-1.170.0.aar">
       <Link>Jars\sdk-common-1.170.0.aar</Link>
     </LibraryProjectZip>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedReferenceJar Include="..\..\externals\protobuf-javanano-3.1.0.jar">
+      <Link>Jars\protobuf-javanano-3.1.0.jar</Link>
+    </EmbeddedReferenceJar>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>

@@ -9,8 +9,8 @@ var solution = "./src/GoogleVR.Xamarin.sln";
 var ANDROID_URL = "https://github.com/googlevr/gvr-android-sdk/archive/v1.170.tar.gz";
 var ANDROID_ARCHIVE = "./externals/gvr-android-sdk-1.170.tar.gz";
 
-var PROTOBUF_URL = "http://central.maven.org/maven2/com/google/protobuf/protobuf-java/3.1.0/protobuf-java-3.1.0.jar";
-var PROTOBUF_ARCHIVE = "./externals/protobuf-java-3.1.0.jar";
+var PROTOBUF_URL = "https://repo1.maven.org/maven2/com/google/protobuf/nano/protobuf-javanano/3.1.0/protobuf-javanano-3.1.0.jar";
+var PROTOBUF_ARCHIVE = "./externals/protobuf-javanano-3.1.0.jar";
 
 var IOS_URL = "https://dl.google.com/dl/cpdc/dc01e783d2390012/GVRSDK-1.170.0.tar.gz";
 var IOS_ARCHIVE = "./externals/GVRSDK-1.170.0.tar.gz";
