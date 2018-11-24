@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
 using Android.App;
+using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Support.V7.App;
@@ -8,7 +9,7 @@ using Com.Google.VR.Sdk.Widgets.Pano;
 
 namespace GoogleVR.Android.BindingTest
 {
-    [Activity]
+    [Activity(ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class PanoActivity : AppCompatActivity
     {
         private static readonly HttpClient _httpClient = new HttpClient();

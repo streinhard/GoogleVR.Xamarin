@@ -1,14 +1,19 @@
 ﻿using Android.App;
+using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
-using Android.Content;
-using Com.Google.VR.Sdk.Widgets.Video;
 using Com.Google.VR.Sdk.Widgets.Pano;
+using Com.Google.VR.Sdk.Widgets.Video;
 
 namespace GoogleVR.Android.BindingTest
 {
-    [Activity(MainLauncher = true)]
+    [Activity(
+        MainLauncher = true,
+        Label = "GoogleVR",
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation
+    )]
     public class MainActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

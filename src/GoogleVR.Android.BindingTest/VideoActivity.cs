@@ -1,13 +1,14 @@
 ﻿using Android.App;
+using Android.Content.PM;
+using Android.Net;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
-using Android.Net;
 using Com.Google.VR.Sdk.Widgets.Video;
 
 namespace GoogleVR.Android.BindingTest
 {
-    [Activity]
+    [Activity(ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class VideoActivity : AppCompatActivity
     {
         private VrVideoView _videoView;
