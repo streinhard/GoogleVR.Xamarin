@@ -55,8 +55,7 @@ namespace GoogleVR.Android.BindingTest
         private void ShowVideoUrl(object sender, System.EventArgs e)
         {
             var videoIntent = new Intent(this, typeof(VideoActivity));
-            videoIntent.PutExtra(VrIntentExtras.VIDEO_URL, "https://infosky.ch/media/bigbuckbunny.mp4");
-            videoIntent.PutExtra(VrIntentExtras.VIDEO_FORMAT, VrVideoView.Options.FormatDefault);
+            videoIntent.PutExtra(VrIntentExtras.VIDEO_URL, "https://infosky.ch/media/office_2k.mp4");
             videoIntent.PutExtra(VrIntentExtras.VIDEO_TYPE, VrVideoView.Options.TypeStereoOverUnder);
             StartActivity(videoIntent);
         }
@@ -80,8 +79,8 @@ namespace GoogleVR.Android.BindingTest
         private void ShowPanoUrl(object sender, System.EventArgs e)
         {
             var panoIntent = new Intent(this, typeof(PanoActivity));
-            panoIntent.PutExtra(VrIntentExtras.IMAGE_URL, "https://infosky.ch/media/burg_schellenberg_8192.jpg");
-            panoIntent.PutExtra(VrIntentExtras.IMAGE_TYPE, VrPanoramaView.Options.TypeMono);
+            panoIntent.PutExtra(VrIntentExtras.IMAGE_URL, "https://infosky.ch/media/road.jpg");
+            panoIntent.PutExtra(VrIntentExtras.IMAGE_TYPE, VrPanoramaView.Options.TypeStereoOverUnder);
             StartActivity(panoIntent);
         }
     }
