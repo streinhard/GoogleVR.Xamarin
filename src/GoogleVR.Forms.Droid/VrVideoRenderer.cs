@@ -9,7 +9,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(VrVideo), typeof(VrVideoRenderer))]
 namespace GoogleVR.Forms
 {
-    public class VrVideoRenderer : ViewRenderer<VrVideo, VrVideoView>
+    public class VrVideoRenderer : VrWidgetRender<VrVideo, VrVideoView>
     {
         public VrVideoRenderer(Context context) : base(context) {}
 
@@ -22,14 +22,9 @@ namespace GoogleVR.Forms
                 SetNativeControl(new VrVideoView(Context));
             }
 
-            if (e.OldElement != null)
-            {
-
-            }
-
             if (e.NewElement != null)
             {
-                UpdateAll();
+                UpdateWidget();
                 LoadVideo();
             }
         }
@@ -40,23 +35,17 @@ namespace GoogleVR.Forms
 
             if (e.PropertyName == VrVideo.VideoSourceProperty.PropertyName ||
                 e.PropertyName == VrVideo.SourceTypeProperty.PropertyName)
+            {
                 LoadVideo();
-            else if (e.PropertyName == VrWidget.InfoButtonEnabledProperty.PropertyName)
-                UpdateInfoButtonEnabled();
-            else if (e.PropertyName == VrWidget.TouchTrackingEnabledProperty.PropertyName)
-                UpdateTouchTrackingEnabled();
-            else if (e.PropertyName == VrWidget.StereoModeButtonEnabledProperty.PropertyName)
-                UpdateStereoModeButtonEnabled();
-            else if (e.PropertyName == VrWidget.TransitionViewEnabledProperty.PropertyName)
-                UpdateTransitionViewEnabled();
+            }
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && Control != null)
+            if (disposing)
             {
-                Control.PauseVideo();
-                Control.PauseRendering();
+                Control?.PauseVideo();
+                Control?.PauseRendering();
             }
 
             base.Dispose(disposing);
@@ -98,34 +87,6 @@ namespace GoogleVR.Forms
                 InputType = (int)Element.SourceType,
                 InputFormat = VrVideoView.Options.FormatDefault // TODO: Make configurable? Not supported on iOS :(
             };
-        }
-
-        private void UpdateAll()
-        {
-            UpdateInfoButtonEnabled();
-            UpdateTouchTrackingEnabled();
-            UpdateStereoModeButtonEnabled();
-            UpdateTransitionViewEnabled();
-        }
-
-        private void UpdateInfoButtonEnabled()
-        {
-            Control.SetInfoButtonEnabled(Element.InfoButtonEnabled);
-        }
-
-        private void UpdateTouchTrackingEnabled()
-        {
-            Control.SetTouchTrackingEnabled(Element.TouchTrackingEnabled);
-        }
-
-        private void UpdateStereoModeButtonEnabled()
-        {
-            Control.SetStereoModeButtonEnabled(Element.StereoModeButtonEnabled);
-        }
-
-        private void UpdateTransitionViewEnabled()
-        {
-            Control.SetTransitionViewEnabled(Element.TransitionViewEnabled);
         }
     }
 }

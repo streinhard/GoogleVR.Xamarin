@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(VrPanorama), typeof(VrPanoramaRenderer))]
 namespace GoogleVR.Forms
 {
-    public class VrPanoramaRenderer : ViewRenderer<VrPanorama, VrPanoramaView>
+    public class VrPanoramaRenderer : VrWidgetRender<VrPanorama, VrPanoramaView>
     {
         private const string TAG = "VrPanoramaRenderer";
 
@@ -27,14 +27,9 @@ namespace GoogleVR.Forms
                 SetNativeControl(new VrPanoramaView(Context));
             }
 
-            if (e.OldElement != null)
-            {
-
-            }
-
             if (e.NewElement != null)
             {
-                UpdateAll();
+                UpdateWidget();
                 LoadImage();
             }
         }
@@ -45,17 +40,20 @@ namespace GoogleVR.Forms
 
             if (e.PropertyName == VrPanorama.ImageSourceProperty.PropertyName ||
                 e.PropertyName == VrPanorama.SourceTypeProperty.PropertyName)
+            {
                 LoadImage();
-            else if (e.PropertyName == VrWidget.InfoButtonEnabledProperty.PropertyName)
-                UpdateInfoButtonEnabled();
-            else if (e.PropertyName == VrWidget.TouchTrackingEnabledProperty.PropertyName)
-                UpdateTouchTrackingEnabled();
-            else if (e.PropertyName == VrWidget.StereoModeButtonEnabledProperty.PropertyName)
-                UpdateStereoModeButtonEnabled();
-            else if (e.PropertyName == VrWidget.TransitionViewEnabledProperty.PropertyName)
-                UpdateTransitionViewEnabled();
-
+            }
         }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Control?.PauseRendering();
+            }
+
+            base.Dispose(disposing);
+        }
+
 
         private void LoadImage()
         {
@@ -102,35 +100,6 @@ namespace GoogleVR.Forms
             {
                 InputType = (int)Element.SourceType
             };
-        }
-
-        private void UpdateAll()
-        {
-            UpdateInfoButtonEnabled();
-            UpdateTouchTrackingEnabled();
-            UpdateStereoModeButtonEnabled();
-            UpdateTransitionViewEnabled();
-        }
-
-
-        private void UpdateInfoButtonEnabled()
-        {
-            Control.SetInfoButtonEnabled(Element.InfoButtonEnabled);
-        }
-
-        private void UpdateTouchTrackingEnabled()
-        {
-            Control.SetTouchTrackingEnabled(Element.TouchTrackingEnabled);
-        }
-
-        private void UpdateStereoModeButtonEnabled()
-        {
-            Control.SetStereoModeButtonEnabled(Element.StereoModeButtonEnabled);
-        }
-
-        private void UpdateTransitionViewEnabled()
-        {
-            Control.SetTransitionViewEnabled(Element.TransitionViewEnabled);
         }
     }
 }
