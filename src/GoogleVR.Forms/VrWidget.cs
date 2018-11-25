@@ -1,0 +1,44 @@
+﻿using System;
+using Xamarin.Forms;
+
+namespace GoogleVR.Forms
+{
+    public class VrWidget : View
+    {
+        public static BindableProperty InfoButtonEnabledProperty =
+            BindableProperty.Create(nameof(InfoButtonEnabled), typeof(bool), typeof(VrWidget), true);
+
+        public static BindableProperty TouckTrackingEnabledProperty =
+            BindableProperty.Create(nameof(TouchTrackingEnabled), typeof(bool), typeof(VrWidget), true);
+
+        public static BindableProperty StereoModeButtonEnabledProperty =
+            BindableProperty.Create(nameof(StereoModeButtonEnabled), typeof(bool), typeof(VrWidget), true);
+
+        public static BindableProperty TransitionViewEnabledProperty =
+            BindableProperty.Create(nameof(TransitionViewEnabled), typeof(bool), typeof(VrWidget), true);
+
+        public bool InfoButtonEnabled
+        {
+            get => (bool)GetValue(InfoButtonEnabledProperty);
+            set => SetValue(InfoButtonEnabledProperty, value);
+        }
+
+        public bool TouchTrackingEnabled
+        {
+            get => (bool)GetValue(TouckTrackingEnabledProperty);
+            set => SetValue(TouckTrackingEnabledProperty, value);
+        }
+
+        public bool StereoModeButtonEnabled
+        {
+            get => (bool)GetValue(StereoModeButtonEnabledProperty);
+            set => SetValue(StereoModeButtonEnabledProperty, value);
+        }
+
+        public bool TransitionViewEnabled
+        {
+            get => (bool)GetValue(TransitionViewEnabledProperty);
+            set => SetValue(TransitionViewEnabledProperty, value);
+        }
+    }
+}

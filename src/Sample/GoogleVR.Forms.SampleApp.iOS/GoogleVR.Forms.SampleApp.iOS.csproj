@@ -160,5 +160,11 @@
       <Name>GoogleVR.Forms.iOS</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\test_1080_stereo.mp4" />
+    <AndroidAsset Include="Resources\test_1920_mono.mp4" />
+    <AndroidAsset Include="Resources\test_2k_mono.jpg" />
+    <AndroidAsset Include="Resources\test_2k_stereo.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
