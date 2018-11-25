@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>GoogleVR.Widgets.iOS</id>
+    <title>Google VR Widgets for Xamarin.iOS</title>
+    <version>$version$</version>
+    <authors>Stefan Reinhard</authors>
+    <owners>bitforge AG</owners>
+    <summary>360 Video and Panorama widgets with support for Cardboard.</summary>
+    <description>Xamarin.iOS binding of Google VR widgets for 360 Videos and Panoramas.</description>
+    <iconUrl>https://vr.google.com/cardboard/images/hero-cardboard-download-mobile.jpg</iconUrl>
+  </metadata>
+  <files>
+    <file src="../src/GoogleVR.iOS/bin/Release/GoogleVR.iOS.dll" target="lib/Xamarin.iOS10" />
+  </files>
+</package>
