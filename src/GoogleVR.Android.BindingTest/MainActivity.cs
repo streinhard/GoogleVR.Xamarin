@@ -4,8 +4,8 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
-using Com.Google.VR.Sdk.Widgets.Pano;
-using Com.Google.VR.Sdk.Widgets.Video;
+using GoogleVR.Widgets.Pano;
+using GoogleVR.Widgets.Video;
 
 namespace GoogleVR.Android.BindingTest
 {

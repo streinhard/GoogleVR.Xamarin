@@ -1,3 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
+    <attr
+        path="/api/package[@name='com.google.vr.sdk.widgets.common']"
+        name="managedName">GoogleVR.Widgets.Common</attr>
 </metadata>

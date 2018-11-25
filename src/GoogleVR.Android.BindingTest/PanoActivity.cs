@@ -5,7 +5,7 @@ using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Support.V7.App;
-using Com.Google.VR.Sdk.Widgets.Pano;
+using GoogleVR.Widgets.Pano;
 
 namespace GoogleVR.Android.BindingTest
 {
@@ -23,13 +23,8 @@ namespace GoogleVR.Android.BindingTest
 
             _panoramaView = FindViewById<VrPanoramaView>(Resource.Id.pano_view);
             _panoramaView.SetTransitionViewEnabled(false);
-        }
 
-        protected override void OnStart()
-        {
-            base.OnStart();
-
-            LoadPanoramaFromIntent().ConfigureAwait(false);
+            Task.Run(LoadPanoramaFromIntent);
         }
 
         private async Task LoadPanoramaFromIntent()

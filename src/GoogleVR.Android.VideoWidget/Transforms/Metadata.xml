@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
+    <remove-node path="/api/package[@name='com.google.vr.libraries.video']" />
+    <remove-node path="/api/package[@name='com.google.vr.sdk.widgets.video.nano']" />
+    <attr
+        path="/api/package[@name='com.google.vr.sdk.widgets.video']"
+        name="managedName">GoogleVR.Widgets.Video</attr>
     <attr 
         path="/api/package[@name='com.google.vr.sdk.widgets.video']/class[@name='VrVideoView']/method[@name='createRenderer' and count(parameter)=4 and parameter[1][@type='android.content.Context'] and parameter[2][@type='com.google.vr.sdk.widgets.common.VrWidgetRenderer.GLThreadScheduler'] and parameter[3][@type='float'] and parameter[4][@type='float']]"
-        name="managedReturn">Com.Google.VR.Sdk.Widgets.Common.VrWidgetRenderer</attr>
+        name="managedReturn">GoogleVR.Widgets.Common.VrWidgetRenderer</attr>
 </metadata>

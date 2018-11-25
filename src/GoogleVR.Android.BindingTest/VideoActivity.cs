@@ -4,7 +4,7 @@ using Android.Net;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
-using Com.Google.VR.Sdk.Widgets.Video;
+using GoogleVR.Widgets.Video;
 
 namespace GoogleVR.Android.BindingTest
 {
