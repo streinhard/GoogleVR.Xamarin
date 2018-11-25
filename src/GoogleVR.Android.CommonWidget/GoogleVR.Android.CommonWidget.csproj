@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>GoogleVR.Android.CommonWidget</RootNamespace>
     <AssemblyName>GoogleVR.Android.CommonWidget</AssemblyName>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
