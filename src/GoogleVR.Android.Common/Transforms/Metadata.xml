@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
+    <!--
+    This binding is focused on the video and panorama widgets. Therefore, it does not
+    expose common GoogleVR namespaces to keep the assembly clean. If you feel the need
+    for any of these things, please open a pull request.
+    -->
     <remove-node path="/api/package[@name='com.google.common.logging.nano']" />
     <remove-node path="/api/package[@name='com.google.vr.sdk.proto.nano']" />
     <remove-node path="/api/package[@name='com.google.vr.audio']" />
