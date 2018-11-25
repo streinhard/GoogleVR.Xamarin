@@ -7,6 +7,9 @@ namespace GoogleVR.iOS.BindingTest
 {
     public class VideoViewController : UIViewController
     {
+        public NSUrl VideoUrl { get; set;  }
+        public GVRVideoType VideoType { get; set; }
+
         private GVRVideoView _videoView;
         private UISlider _slider;
         private bool _isPlaying;
@@ -21,23 +24,18 @@ namespace GoogleVR.iOS.BindingTest
         {
             base.ViewDidLoad();
 
-            var videoUrl = NSBundle.MainBundle.GetUrlForResource("test_1080_stereo", "mp4");
-
-            _videoView = new GVRVideoView();
-            _videoView.EnableCardboardButton = true;
-            _videoView.EnableFullscreenButton = true;
-            _videoView.WeakDelegate = new VideoController(this);
-            _videoView.LoadFromUrl(videoUrl, GVRVideoType.StereoOverUnder);
+            _videoView = new GVRVideoView
+            {
+                EnableCardboardButton = true,
+                EnableFullscreenButton = true,
+                EnableTouchTracking = true,
+                WeakDelegate = new VideoController(this)
+            };
             View.Add(_videoView);
 
             _slider = new UISlider();
             _slider.TouchUpInside += OnSliderTouchUpInside;
             View.Add(_slider);
-        }
-
-        private void OnSliderTouchUpInside(object sender, EventArgs e)
-        {
-            _videoView.SeekTo(_slider.Value);
         }
 
         public override void ViewWillLayoutSubviews()
@@ -48,11 +46,27 @@ namespace GoogleVR.iOS.BindingTest
             _slider.Frame = new CGRect(0, View.Frame.Height - 50, View.Frame.Width, 50);
         }
 
-        public override void ViewWillDisappear(bool animated)
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewWillAppear(animated);
+            base.ViewDidAppear(animated);
+
+            if (VideoUrl != null)
+            {
+                _videoView.LoadFromUrl(VideoUrl, VideoType);
+            }
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
 
             _videoView.Stop();
+            _videoView.RemoveFromSuperview();
+        }
+
+        private void OnSliderTouchUpInside(object sender, EventArgs e)
+        {
+            _videoView.SeekTo(_slider.Value);
         }
 
         class VideoController : GVRVideoViewDelegate

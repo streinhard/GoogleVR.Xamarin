@@ -5,7 +5,10 @@ namespace GoogleVR.iOS.BindingTest
 {
     public class PanoViewController : UIViewController
     {
-        GVRPanoramaView _panoramaView;
+        public UIImage PanoImage { get; set; }
+        public GVRPanoramaImageType ImageType { get; set; }
+
+        private GVRPanoramaView _panoramaView;
 
         public PanoViewController()
         {
@@ -17,12 +20,13 @@ namespace GoogleVR.iOS.BindingTest
         {
             base.ViewDidLoad();
 
-            var image = new UIImage("test_2k_stereo.jpg");
+            _panoramaView = new GVRPanoramaView
+            {
+                EnableCardboardButton = true,
+                EnableFullscreenButton = true,
+                EnableTouchTracking = true
+            };
 
-            _panoramaView = new GVRPanoramaView();
-            _panoramaView.EnableCardboardButton = true;
-            _panoramaView.EnableFullscreenButton = true;
-            _panoramaView.LoadImage(image, GVRPanoramaImageType.StereoOverUnder);
             View.Add(_panoramaView);
         }
 
@@ -31,6 +35,16 @@ namespace GoogleVR.iOS.BindingTest
             base.ViewWillLayoutSubviews();
 
             _panoramaView.Frame = View.Frame;
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            if (PanoImage != null)
+            {
+                _panoramaView.LoadImage(PanoImage, ImageType);
+            }
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System;
 using CoreGraphics;
+using Foundation;
 using UIKit;
+using System.Net.Http;
 
 namespace GoogleVR.iOS.BindingTest
 {
     public class MainViewController : UIViewController
     {
-        UIButton videoButton;
-        UIButton panoButton;
+        private int _heightOffset = 100;
 
         public MainViewController()
         {
@@ -22,34 +23,98 @@ namespace GoogleVR.iOS.BindingTest
 
             NavigationItem.BackBarButtonItem = new UIBarButtonItem("", UIBarButtonItemStyle.Plain, null);
 
-            videoButton = new UIButton(UIButtonType.System);
-            videoButton.SetTitle("Video", UIControlState.Normal);
-            videoButton.TouchUpInside += ShowVideo;
-            View.Add(videoButton);
+            var videoStereo = AddButton("Video Stereo 1080p");
+            var videoMono = AddButton("Video Mono 1920p");
+            var videoUrl = AddButton("Video from URL");
+            var panoStereo = AddButton("Panorama Stereo 2k");
+            var panoMono = AddButton("Panorama Mono 2k");
+            var panoUrl = AddButton("Panorama form URL");
 
-            panoButton = new UIButton(UIButtonType.System);
-            panoButton.SetTitle("Panorama", UIControlState.Normal);
-            panoButton.TouchUpInside += ShowPanorama;
-            View.Add(panoButton);
+            videoStereo.TouchUpInside += ShowVideoStereo;
+            videoMono.TouchUpInside += ShowVideoMono;
+            videoUrl.TouchUpInside += ShowVideoUrl;
+            panoStereo.TouchUpInside += ShowPanoStereo;
+            panoMono.TouchUpInside += ShowPanoMono;
+            panoUrl.TouchUpInside += ShowPanoUrl;
+
         }
 
-        public override void ViewWillLayoutSubviews()
+        private UIButton AddButton(string title)
         {
-            base.ViewWillLayoutSubviews();
+            var button = new UIButton(UIButtonType.System);
+            button.SetTitle(title, UIControlState.Normal);
+            button.Frame = new CGRect(0, _heightOffset, View.Frame.Width, 50);
+            View.Add(button);
 
-            videoButton.Frame = new CGRect(0, 100, View.Frame.Width, 50);
-            panoButton.Frame = new CGRect(0, 150, View.Frame.Width, 50);
+            _heightOffset += 50;
+
+            return button;
         }
 
-        private void ShowVideo(object sender, EventArgs e)
+        private void ShowVideoStereo(object sender, EventArgs e)
         {
-            var videoViewController = new VideoViewController();
+            var videoViewController = new VideoViewController
+            {
+                VideoUrl = NSBundle.MainBundle.GetUrlForResource("test_1080_stereo", "mp4"),
+                VideoType = GVRVideoType.StereoOverUnder
+            };
+
             NavigationController.PushViewController(videoViewController, true);
         }
 
-        private void ShowPanorama(object sender, EventArgs e)
+        private void ShowVideoMono(object sender, EventArgs e)
         {
-            var panoViewController = new PanoViewController();
+            var videoViewController = new VideoViewController
+            {
+                VideoUrl = NSBundle.MainBundle.GetUrlForResource("test_1920_mono", "mp4"),
+                VideoType = GVRVideoType.Mono
+            };
+
+            NavigationController.PushViewController(videoViewController, true);
+        }
+
+        private void ShowVideoUrl(object sender, EventArgs e)
+        {
+            var videoViewController = new VideoViewController
+            {
+                VideoUrl = NSUrl.FromString("https://infosky.ch/media/office_2k.mp4"),
+                VideoType = GVRVideoType.StereoOverUnder
+            };
+
+            NavigationController.PushViewController(videoViewController, true);
+        }
+
+        private void ShowPanoStereo(object sender, EventArgs e)
+        {
+            var panoViewController = new PanoViewController
+            {
+                PanoImage = new UIImage("test_2k_stereo.jpg"),
+                ImageType = GVRPanoramaImageType.StereoOverUnder
+            };
+
+            NavigationController.PushViewController(panoViewController, true);
+        }
+
+        private void ShowPanoMono(object sender, EventArgs e)
+        {
+            var panoViewController = new PanoViewController
+            {
+                PanoImage = new UIImage("test_2k_mono.jpg"),
+                ImageType = GVRPanoramaImageType.Mono
+            };
+
+            NavigationController.PushViewController(panoViewController, true);
+        }
+
+        private void ShowPanoUrl(object sender, EventArgs e)
+        {
+            var imageData = NSData.FromUrl(NSUrl.FromString("https://infosky.ch/media/road.jpg"));
+            var panoViewController = new PanoViewController
+            {
+                PanoImage = UIImage.LoadFromData(imageData),
+                ImageType = GVRPanoramaImageType.StereoOverUnder
+            };
+
             NavigationController.PushViewController(panoViewController, true);
         }
     }
