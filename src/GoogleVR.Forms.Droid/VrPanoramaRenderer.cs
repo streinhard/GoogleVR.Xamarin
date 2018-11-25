@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Android.Content;
+using Android.Graphics;
+using Android.Util;
 using GoogleVR.Forms;
 using GoogleVR.Widgets.Pano;
 using Xamarin.Forms;
@@ -11,6 +14,8 @@ namespace GoogleVR.Forms
 {
     public class VrPanoramaRenderer : ViewRenderer<VrPanorama, VrPanoramaView>
     {
+        private const string TAG = "VrPanoramaRenderer";
+
         public VrPanoramaRenderer(Android.Content.Context context) : base(context) {}
 
         protected override void OnElementChanged(ElementChangedEventArgs<VrPanorama> e)
@@ -64,18 +69,39 @@ namespace GoogleVR.Forms
         {
             if (Element.ImageSource != null)
             {
-                Task.Run(LoadImageAsync);
+                LoadImageAsync().ConfigureAwait(false);
             }
         }
 
         private async Task LoadImageAsync()
         {
-            if (Element.ImageSource is IImageSourceHandler imageSourceHandler)
+            var bitmap = await LoadBitmapFromImageSource(Element.ImageSource);
+            if (bitmap == null) return;
+
+            try
             {
-                // TODO: Error handling
-                var bitmap = await imageSourceHandler.LoadImageAsync(Element.ImageSource, Context);
                 Control.LoadImageFromBitmap(bitmap, GetOptions());
             }
+            catch (Java.IO.IOException)
+            {
+                Log.Error(TAG, $"Could not load image {Element.ImageSource}");
+            }
+        }
+
+        private async Task<Bitmap> LoadBitmapFromImageSource(ImageSource imageSource)
+        {
+            IImageSourceHandler handler;
+
+            if (imageSource is FileImageSource)
+                handler = new FileImageSourceHandler();
+            else if (imageSource is StreamImageSource)
+                handler = new StreamImagesourceHandler();
+            else if (imageSource is UriImageSource)
+                handler = new ImageLoaderSourceHandler();
+            else
+                return null;
+
+            return await handler.LoadImageAsync(imageSource, Context);
         }
 
         private VrPanoramaView.Options GetOptions()

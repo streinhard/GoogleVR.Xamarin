@@ -15,5 +15,9 @@
             Text="Panorama Mono 2k"
             Clicked="ShowPanoMono" />
         
+        <Button
+            Text="Panorama from Url"
+            Clicked="ShowPanoUrl" />
+        
     </StackLayout>
 </ContentPage>
