@@ -24,6 +24,7 @@ namespace GoogleVR.Android.BindingTest
             _videoView = FindViewById<VrVideoView>(Resource.Id.video_view);
             _seekBar = FindViewById<SeekBar>(Resource.Id.seek_bar);
 
+            _videoView.SetTransitionViewEnabled(false);
             _videoView.SetEventListener(new VideoEventListener(this));
 
             _seekBar.ProgressChanged += OnProgressChanged;

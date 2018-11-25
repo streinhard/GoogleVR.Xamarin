@@ -22,6 +22,12 @@ namespace GoogleVR.Android.BindingTest
             SetContentView(Resource.Layout.Pano);
 
             _panoramaView = FindViewById<VrPanoramaView>(Resource.Id.pano_view);
+            _panoramaView.SetTransitionViewEnabled(false);
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
 
             LoadPanoramaFromIntent().ConfigureAwait(false);
         }
