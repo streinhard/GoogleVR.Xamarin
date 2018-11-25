@@ -155,6 +155,10 @@
       <Project>{F74CA6C9-FE3B-42ED-8DBF-E1349BAE4A4E}</Project>
       <Name>GoogleVR.Forms.SampleApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Forms.iOS\GoogleVR.Forms.iOS.csproj">
+      <Project>{A62BDFBC-6A2D-429F-A168-C9115B394ED1}</Project>
+      <Name>GoogleVR.Forms.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
