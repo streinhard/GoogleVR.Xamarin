@@ -6,14 +6,14 @@ namespace GoogleVR.Forms
     public class VrPanorama : VrWidget
     {
         public static BindableProperty ImageSourceProperty =
-            BindableProperty.Create(nameof(ImageSource), typeof(Image), typeof(VrPanorama));
+            BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(VrPanorama));
 
         public static BindableProperty SourceTypeProperty =
             BindableProperty.Create(nameof(SourceType), typeof(VrSourceType), typeof(VrPanorama), VrSourceType.Mono);
 
-        public Image ImageSource
+        public ImageSource ImageSource
         {
-            get => (Image)GetValue(ImageSourceProperty);
+            get => (ImageSource)GetValue(ImageSourceProperty);
             set => SetValue(ImageSourceProperty, value);
         }
 

@@ -10,9 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <ProjectReference Include="..\..\GoogleVR.Forms\GoogleVR.Forms.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\GoogleVR.Forms\GoogleVR.Forms.csproj" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>
 </Project>

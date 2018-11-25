@@ -27,7 +27,7 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,6 +84,26 @@
     <ProjectReference Include="..\..\GoogleVR.Forms.Droid\GoogleVR.Forms.Droid.csproj">
       <Project>{5E598C69-00F2-487D-9D11-17EC29F18006}</Project>
       <Name>GoogleVR.Forms.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Forms\GoogleVR.Forms.csproj">
+      <Project>{E3193E86-AA87-48AD-B3C4-C7A71402F450}</Project>
+      <Name>GoogleVR.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Android.Common\GoogleVR.Android.Common.csproj">
+      <Project>{DA157FD9-06A4-414F-A7DD-FA5A3B9E2420}</Project>
+      <Name>GoogleVR.Android.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Android.CommonWidget\GoogleVR.Android.CommonWidget.csproj">
+      <Project>{D3F13B00-14E8-490D-B845-93B293B42E89}</Project>
+      <Name>GoogleVR.Android.CommonWidget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Android.PanoWidget\GoogleVR.Android.PanoWidget.csproj">
+      <Project>{36EDB125-F067-41EE-956D-D5DA38E4EBA2}</Project>
+      <Name>GoogleVR.Android.PanoWidget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Android.VideoWidget\GoogleVR.Android.VideoWidget.csproj">
+      <Project>{D88D4643-6F13-400D-A121-CCD135D3EB76}</Project>
+      <Name>GoogleVR.Android.VideoWidget</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

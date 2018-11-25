@@ -8,7 +8,7 @@ namespace GoogleVR.Forms
         public static BindableProperty InfoButtonEnabledProperty =
             BindableProperty.Create(nameof(InfoButtonEnabled), typeof(bool), typeof(VrWidget), true);
 
-        public static BindableProperty TouckTrackingEnabledProperty =
+        public static BindableProperty TouchTrackingEnabledProperty =
             BindableProperty.Create(nameof(TouchTrackingEnabled), typeof(bool), typeof(VrWidget), true);
 
         public static BindableProperty StereoModeButtonEnabledProperty =
@@ -25,8 +25,8 @@ namespace GoogleVR.Forms
 
         public bool TouchTrackingEnabled
         {
-            get => (bool)GetValue(TouckTrackingEnabledProperty);
-            set => SetValue(TouckTrackingEnabledProperty, value);
+            get => (bool)GetValue(TouchTrackingEnabledProperty);
+            set => SetValue(TouchTrackingEnabledProperty, value);
         }
 
         public bool StereoModeButtonEnabled
