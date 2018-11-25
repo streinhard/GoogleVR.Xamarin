@@ -3,20 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace GoogleVR.iOS
 {
-    public enum GVRWidgetDisplayMode : ulong
+    public enum WidgetDisplayMode : ulong
     {
         Embedded = 1,
         Fullscreen,
         FullscreenVR
     }
 
-    public enum GVRPanoramaImageType : ulong
+    public enum PanoramaImageType : ulong
     {
         Mono = 1,
         StereoOverUnder
     }
 
-    public enum GVRVideoType : ulong
+    public enum VideoType : ulong
     {
         Mono = 1,
         StereoOverUnder,
@@ -24,7 +24,7 @@ namespace GoogleVR.iOS
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct GVRHeadRotation
+    public struct HeadRotation
     {
         public nfloat yaw;
         public nfloat pitch;

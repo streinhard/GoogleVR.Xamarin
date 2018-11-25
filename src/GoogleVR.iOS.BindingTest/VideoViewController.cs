@@ -8,9 +8,9 @@ namespace GoogleVR.iOS.BindingTest
     public class VideoViewController : UIViewController
     {
         public NSUrl VideoUrl { get; set;  }
-        public GVRVideoType VideoType { get; set; }
+        public VideoType VideoType { get; set; }
 
-        private GVRVideoView _videoView;
+        private VideoView _videoView;
         private UISlider _slider;
         private bool _isPlaying;
 
@@ -24,7 +24,7 @@ namespace GoogleVR.iOS.BindingTest
         {
             base.ViewDidLoad();
 
-            _videoView = new GVRVideoView
+            _videoView = new VideoView
             {
                 EnableCardboardButton = true,
                 EnableFullscreenButton = true,
@@ -69,7 +69,7 @@ namespace GoogleVR.iOS.BindingTest
             _videoView.SeekTo(_slider.Value);
         }
 
-        class VideoController : GVRVideoViewDelegate
+        class VideoController : VideoViewDelegate
         {
             private VideoViewController _parent;
 
@@ -78,7 +78,7 @@ namespace GoogleVR.iOS.BindingTest
                 this._parent = _parent;
             }
 
-            public override void DidTap(GVRWidgetView widgetView)
+            public override void DidTap(WidgetView widgetView)
             {
                 if (_parent._isPlaying)
                 {
@@ -92,24 +92,24 @@ namespace GoogleVR.iOS.BindingTest
                 _parent._isPlaying = !_parent._isPlaying;
             }
 
-            public override void DidChangeDisplayMode(GVRWidgetView widgetView, GVRWidgetDisplayMode displayMode)
+            public override void DidChangeDisplayMode(WidgetView widgetView, WidgetDisplayMode displayMode)
             {
                 Console.WriteLine("New display mode", displayMode);
             }
 
-            public override void DidLoadContent(GVRWidgetView widgetView, NSObject content)
+            public override void DidLoadContent(WidgetView widgetView, NSObject content)
             {
                 Console.WriteLine("Content loaded!");
 
                 _parent._videoView.Play();
             }
 
-            public override void DidFailToLoadContent(GVRWidgetView widgetView, NSObject content, string errorMessage)
+            public override void DidFailToLoadContent(WidgetView widgetView, NSObject content, string errorMessage)
             {
                 Console.WriteLine("Failed to load: " + errorMessage);
             }
 
-            public override void DidUpdatePosition(GVRVideoView videoView, double position)
+            public override void DidUpdatePosition(VideoView videoView, double position)
             {
                 _parent._slider.MaxValue = (float)_parent._videoView.Duration;
 

@@ -6,9 +6,9 @@ namespace GoogleVR.iOS.BindingTest
     public class PanoViewController : UIViewController
     {
         public UIImage PanoImage { get; set; }
-        public GVRPanoramaImageType ImageType { get; set; }
+        public PanoramaImageType ImageType { get; set; }
 
-        private GVRPanoramaView _panoramaView;
+        private PanoramaView _panoramaView;
 
         public PanoViewController()
         {
@@ -20,7 +20,7 @@ namespace GoogleVR.iOS.BindingTest
         {
             base.ViewDidLoad();
 
-            _panoramaView = new GVRPanoramaView
+            _panoramaView = new PanoramaView
             {
                 EnableCardboardButton = true,
                 EnableFullscreenButton = true,

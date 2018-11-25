@@ -2,7 +2,6 @@
 using CoreGraphics;
 using Foundation;
 using UIKit;
-using System.Net.Http;
 
 namespace GoogleVR.iOS.BindingTest
 {
@@ -56,7 +55,7 @@ namespace GoogleVR.iOS.BindingTest
             var videoViewController = new VideoViewController
             {
                 VideoUrl = NSBundle.MainBundle.GetUrlForResource("test_1080_stereo", "mp4"),
-                VideoType = GVRVideoType.StereoOverUnder
+                VideoType = VideoType.StereoOverUnder
             };
 
             NavigationController.PushViewController(videoViewController, true);
@@ -67,7 +66,7 @@ namespace GoogleVR.iOS.BindingTest
             var videoViewController = new VideoViewController
             {
                 VideoUrl = NSBundle.MainBundle.GetUrlForResource("test_1920_mono", "mp4"),
-                VideoType = GVRVideoType.Mono
+                VideoType = VideoType.Mono
             };
 
             NavigationController.PushViewController(videoViewController, true);
@@ -78,7 +77,7 @@ namespace GoogleVR.iOS.BindingTest
             var videoViewController = new VideoViewController
             {
                 VideoUrl = NSUrl.FromString("https://infosky.ch/media/office_2k.mp4"),
-                VideoType = GVRVideoType.StereoOverUnder
+                VideoType = VideoType.StereoOverUnder
             };
 
             NavigationController.PushViewController(videoViewController, true);
@@ -89,7 +88,7 @@ namespace GoogleVR.iOS.BindingTest
             var panoViewController = new PanoViewController
             {
                 PanoImage = new UIImage("test_2k_stereo.jpg"),
-                ImageType = GVRPanoramaImageType.StereoOverUnder
+                ImageType = PanoramaImageType.StereoOverUnder
             };
 
             NavigationController.PushViewController(panoViewController, true);
@@ -100,7 +99,7 @@ namespace GoogleVR.iOS.BindingTest
             var panoViewController = new PanoViewController
             {
                 PanoImage = new UIImage("test_2k_mono.jpg"),
-                ImageType = GVRPanoramaImageType.Mono
+                ImageType = PanoramaImageType.Mono
             };
 
             NavigationController.PushViewController(panoViewController, true);
@@ -112,7 +111,7 @@ namespace GoogleVR.iOS.BindingTest
             var panoViewController = new PanoViewController
             {
                 PanoImage = UIImage.LoadFromData(imageData),
-                ImageType = GVRPanoramaImageType.StereoOverUnder
+                ImageType = PanoramaImageType.StereoOverUnder
             };
 
             NavigationController.PushViewController(panoViewController, true);
