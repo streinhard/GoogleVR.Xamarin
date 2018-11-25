@@ -14,6 +14,30 @@ namespace GoogleVR.Forms.SampleApp
             InitializeComponent();
         }
 
+        private void ShowVideoStereo(object sender, EventArgs e)
+        {
+            var videoPage = new VideoPage();
+            videoPage.Video.VideoSource = "test_1080_stereo.mp4";
+            videoPage.Video.SourceType = VrSourceType.StereoOverUnder;
+            Navigation.PushAsync(videoPage);
+        }
+
+        private void ShowVideoMono(object sender, EventArgs e)
+        {
+            var videoPage = new VideoPage();
+            videoPage.Video.VideoSource = "test_1920_mono.mp4";
+            videoPage.Video.SourceType = VrSourceType.Mono;
+            Navigation.PushAsync(videoPage);
+        }
+
+        private void ShowVideoUrl(object sender, EventArgs e)
+        {
+            var videoPage = new VideoPage();
+            videoPage.Video.VideoSource = "https://infosky.ch/media/office_2k.mp4";
+            videoPage.Video.SourceType = VrSourceType.StereoOverUnder;
+            Navigation.PushAsync(videoPage);
+        }
+
         private void ShowPanoStereo(object sender, EventArgs e)
         {
             var panoPage = new PanoPage();

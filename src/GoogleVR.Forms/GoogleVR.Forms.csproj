@@ -7,8 +7,4 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="VrPanoramaType.cs" />
-    <Compile Remove="VrVideoType.cs" />
-  </ItemGroup>
 </Project>

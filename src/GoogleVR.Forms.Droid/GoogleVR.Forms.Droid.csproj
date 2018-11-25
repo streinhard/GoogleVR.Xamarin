@@ -134,6 +134,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VrPanoramaRenderer.cs" />
+    <Compile Include="VrVideoRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleVR.Forms\GoogleVR.Forms.csproj">

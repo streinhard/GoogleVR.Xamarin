@@ -5,16 +5,16 @@ namespace GoogleVR.Forms
 {
     public class VrVideo : VrWidget
     {
-        public static BindableProperty VideoUrlProperty =
-            BindableProperty.Create(nameof(VideoUrl), typeof(string), typeof(VrPanorama));
+        public static BindableProperty VideoSourceProperty =
+            BindableProperty.Create(nameof(VideoSource), typeof(string), typeof(VrVideo));
 
         public static BindableProperty SourceTypeProperty =
-            BindableProperty.Create(nameof(SourceType), typeof(VrSourceType), typeof(VrPanorama), VrSourceType.Mono);
+            BindableProperty.Create(nameof(SourceType), typeof(VrSourceType), typeof(VrVideo), VrSourceType.Mono);
          
-        public string VideoUrl
+        public string VideoSource
         {
-            get => (string)GetValue(VideoUrlProperty);
-            set => SetValue(VideoUrlProperty, value);
+            get => (string)GetValue(VideoSourceProperty);
+            set => SetValue(VideoSourceProperty, value);
         }
 
         public VrSourceType SourceType

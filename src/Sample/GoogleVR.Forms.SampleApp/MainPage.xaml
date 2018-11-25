@@ -8,16 +8,28 @@
     <StackLayout>
         
         <Button
+            Text="Video Stereo 1080p"
+            Clicked="ShowVideoStereo" />
+
+        <Button
+            Text="Video Mono 1920p"
+            Clicked="ShowVideoMono" />
+
+        <Button
+            Text="Video from Url"
+            Clicked="ShowVideoUrl" />
+
+        <Button
             Text="Panorama Stereo 2k"
             Clicked="ShowPanoStereo"/>
-        
+
         <Button
             Text="Panorama Mono 2k"
             Clicked="ShowPanoMono" />
-        
+
         <Button
             Text="Panorama from Url"
             Clicked="ShowPanoUrl" />
-        
+
     </StackLayout>
 </ContentPage>

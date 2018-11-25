@@ -1,30 +1,25 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using Android.Content;
-using Android.Graphics;
-using Android.Util;
 using GoogleVR.Forms;
-using GoogleVR.Widgets.Pano;
+using GoogleVR.Widgets.Video;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(VrPanorama), typeof(VrPanoramaRenderer))]
+[assembly: ExportRenderer(typeof(VrVideo), typeof(VrVideoRenderer))]
 namespace GoogleVR.Forms
 {
-    public class VrPanoramaRenderer : ViewRenderer<VrPanorama, VrPanoramaView>
+    public class VrVideoRenderer : ViewRenderer<VrVideo, VrVideoView>
     {
-        private const string TAG = "VrPanoramaRenderer";
+        public VrVideoRenderer(Context context) : base(context) {}
 
-        public VrPanoramaRenderer(Context context) : base(context) {}
-
-        protected override void OnElementChanged(ElementChangedEventArgs<VrPanorama> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<VrVideo> e)
         {
             base.OnElementChanged(e);
 
             if (Control == null)
             {
-                SetNativeControl(new VrPanoramaView(Context));
+                SetNativeControl(new VrVideoView(Context));
             }
 
             if (e.OldElement != null)
@@ -35,7 +30,7 @@ namespace GoogleVR.Forms
             if (e.NewElement != null)
             {
                 UpdateAll();
-                LoadImage();
+                LoadVideo();
             }
         }
 
@@ -43,9 +38,9 @@ namespace GoogleVR.Forms
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (e.PropertyName == VrPanorama.ImageSourceProperty.PropertyName ||
-                e.PropertyName == VrPanorama.SourceTypeProperty.PropertyName)
-                LoadImage();
+            if (e.PropertyName == VrVideo.VideoSourceProperty.PropertyName ||
+                e.PropertyName == VrVideo.SourceTypeProperty.PropertyName)
+                LoadVideo();
             else if (e.PropertyName == VrWidget.InfoButtonEnabledProperty.PropertyName)
                 UpdateInfoButtonEnabled();
             else if (e.PropertyName == VrWidget.TouchTrackingEnabledProperty.PropertyName)
@@ -54,53 +49,54 @@ namespace GoogleVR.Forms
                 UpdateStereoModeButtonEnabled();
             else if (e.PropertyName == VrWidget.TransitionViewEnabledProperty.PropertyName)
                 UpdateTransitionViewEnabled();
-
         }
 
-        private void LoadImage()
+        protected override void Dispose(bool disposing)
         {
-            if (Element.ImageSource != null)
+            if (disposing && Control != null)
             {
-                LoadImageAsync().ConfigureAwait(false);
+                Control.PauseVideo();
+                Control.PauseRendering();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        private void LoadVideo()
+        {
+            var videoSource = Element.VideoSource;
+            if (videoSource == null) return;
+
+            var videoUri = TryParseUri(videoSource);
+            if (videoUri != null)
+            {
+                Control.LoadVideo(videoUri, GetOptions());
+            }
+            else
+            {
+                Control.LoadVideoFromAsset(videoSource, GetOptions());
             }
         }
 
-        private async Task LoadImageAsync()
+        private Android.Net.Uri TryParseUri(string videoSource)
         {
-            var bitmap = await LoadBitmapFromImageSource(Element.ImageSource);
-            if (bitmap == null) return;
-
             try
             {
-                Control.LoadImageFromBitmap(bitmap, GetOptions());
+                var uri = Android.Net.Uri.Parse(videoSource);
+                return uri.Scheme == null ? null : uri;
             }
-            catch (Java.IO.IOException)
+            catch (Java.Lang.NullPointerException)
             {
-                Log.Error(TAG, $"Could not load image {Element.ImageSource}");
-            }
-        }
-
-        private async Task<Bitmap> LoadBitmapFromImageSource(ImageSource imageSource)
-        {
-            IImageSourceHandler handler;
-
-            if (imageSource is FileImageSource)
-                handler = new FileImageSourceHandler();
-            else if (imageSource is StreamImageSource)
-                handler = new StreamImagesourceHandler();
-            else if (imageSource is UriImageSource)
-                handler = new ImageLoaderSourceHandler();
-            else
                 return null;
-
-            return await handler.LoadImageAsync(imageSource, Context);
+            }
         }
 
-        private VrPanoramaView.Options GetOptions()
+        private VrVideoView.Options GetOptions()
         {
-            return new VrPanoramaView.Options
+            return new VrVideoView.Options
             {
-                InputType = (int)Element.SourceType
+                InputType = (int)Element.SourceType,
+                InputFormat = VrVideoView.Options.FormatDefault // TODO: Make configurable? Not supported on iOS :(
             };
         }
 
@@ -111,7 +107,6 @@ namespace GoogleVR.Forms
             UpdateStereoModeButtonEnabled();
             UpdateTransitionViewEnabled();
         }
-
 
         private void UpdateInfoButtonEnabled()
         {
