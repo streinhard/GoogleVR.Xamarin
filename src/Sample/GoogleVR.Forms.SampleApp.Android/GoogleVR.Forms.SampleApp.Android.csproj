@@ -39,6 +39,9 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
+  <PropertyGroup>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
@@ -74,6 +77,10 @@
     <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleVR.Forms.SampleApp\GoogleVR.Forms.SampleApp.csproj">
+      <Project>{F74CA6C9-FE3B-42ED-8DBF-E1349BAE4A4E}</Project>
+      <Name>GoogleVR.Forms.SampleApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\GoogleVR.Forms.Droid\GoogleVR.Forms.Droid.csproj">
       <Project>{5E598C69-00F2-487D-9D11-17EC29F18006}</Project>
       <Name>GoogleVR.Forms.Droid</Name>

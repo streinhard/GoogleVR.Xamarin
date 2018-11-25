@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>GoogleVR.Forms</RootNamespace>
     <AssemblyName>GoogleVR.Forms.Droid</AssemblyName>
-    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
@@ -38,10 +38,7 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <JavaMaximumHeapSize></JavaMaximumHeapSize>
-    <AndroidLinkSkip></AndroidLinkSkip>
     <AndroidLinkMode></AndroidLinkMode>
-    <SignAssembly>false</SignAssembly>
-    <DelaySign>false</DelaySign>
     <LangVersion>Default</LangVersion>
   </PropertyGroup>
   <ItemGroup>
