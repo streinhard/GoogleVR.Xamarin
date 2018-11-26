@@ -2,11 +2,64 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GoogleVR.Forms.SampleApp"
     xmlns:gvr="clr-namespace:GoogleVR.Forms;assembly=GoogleVR.Forms"
     x:Class="GoogleVR.Forms.SampleApp.PanoPage"
     Title="Panorama Widget">
-    <gvr:VrPanorama
-        x:Name="panorama"
-        VerticalOptions="FillAndExpand"
-        HorizontalOptions="FillAndExpand" />
+    <StackLayout>
+        <gvr:VrPanorama
+            x:Name="panorama"
+            VerticalOptions="FillAndExpand" />
+        <Grid
+            Padding="10"
+            RowSpacing="10">
+            <Label
+                Text="Info Button Enabled"
+                VerticalTextAlignment="Center"
+                Grid.Row="0"
+                Grid.Column="0" />
+            <Switch
+                BindingContext="{x:Reference panorama}"
+                IsToggled="{Binding InfoButtonEnabled}"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="0"
+                Grid.Column="1"/>
+
+            <Label
+                Text="Touch Tracking Enabled"
+                VerticalTextAlignment="Center"
+                Grid.Row="1"
+                Grid.Column="0"/>
+            <Switch
+                BindingContext="{x:Reference panorama}"
+                IsToggled="{Binding TouchTrackingEnabled}"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="1"
+                Grid.Column="1" />
+            
+            <Label
+                Text="Stereo Mode Button Enabled"
+                VerticalTextAlignment="Center"
+                Grid.Row="2"
+                Grid.Column="0"/>
+            <Switch
+                BindingContext="{x:Reference panorama}"
+                IsToggled="{Binding StereoModeButtonEnabled}"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="2"
+                Grid.Column="1" />
+            
+            <Label
+                Text="Transition View Enabled"
+                VerticalTextAlignment="Center"
+                Grid.Row="3"
+                Grid.Column="0"/>
+            <Switch
+                BindingContext="{x:Reference panorama}"
+                IsToggled="{Binding TransitionViewEnabled}"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="3"
+                Grid.Column="1" />
+        </Grid>
+    </StackLayout>
 </ContentPage>
