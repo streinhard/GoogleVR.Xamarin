@@ -137,6 +137,8 @@
     <Compile Include="VrVideoRenderer.cs" />
     <Compile Include="VrWidgetRenderer.cs" />
     <Compile Include="VrImageLoader.cs" />
+    <Compile Include="IVrImageLoader.cs" />
+    <Compile Include="DefaultImageLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleVR.Forms\GoogleVR.Forms.csproj">

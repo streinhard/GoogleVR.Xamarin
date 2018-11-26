@@ -10,9 +10,9 @@ using Android.Graphics.Drawables;
 
 namespace GoogleVR.Forms.SampleApp.Droid
 {
-    public class GlideVrImageLoader : VrImageLoader
+    public class GlideVrImageLoader : IVrImageLoader
     {
-        public override void LoadImageInto(
+        public void LoadImageInto(
             Context context,
             ImageSource imageSource,
             VrPanoramaView panoramaView,
@@ -29,10 +29,6 @@ namespace GoogleVR.Forms.SampleApp.Droid
                 var assetUri = Android.Net.Uri.Parse($"file:///android_asset/{fileImageSource.File}");
                 var target = new VrImageTarget(panoramaView, options);
                 Glide.With(context).Load(assetUri).Into(target);
-            }
-            else
-            {
-                base.LoadImageInto(context, imageSource, panoramaView, options);
             }
         }
 
