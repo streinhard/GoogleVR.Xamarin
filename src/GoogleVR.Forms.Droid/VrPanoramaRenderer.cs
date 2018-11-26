@@ -44,6 +44,7 @@ namespace GoogleVR.Forms
                 LoadImage();
             }
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -54,44 +55,12 @@ namespace GoogleVR.Forms
             base.Dispose(disposing);
         }
 
-
         private void LoadImage()
         {
             if (Element.ImageSource != null)
             {
-                LoadImageAsync().ConfigureAwait(false);
+                VrImageLoader.Instance.LoadImageInto(Context, Element.ImageSource, Control, GetOptions());
             }
-        }
-
-        private async Task LoadImageAsync()
-        {
-            var bitmap = await LoadBitmapFromImageSource(Element.ImageSource);
-            if (bitmap == null) return;
-
-            try
-            {
-                Control.LoadImageFromBitmap(bitmap, GetOptions());
-            }
-            catch (Java.IO.IOException)
-            {
-                Log.Error(TAG, $"Could not load image {Element.ImageSource}");
-            }
-        }
-
-        private async Task<Bitmap> LoadBitmapFromImageSource(ImageSource imageSource)
-        {
-            IImageSourceHandler handler;
-
-            if (imageSource is FileImageSource)
-                handler = new FileImageSourceHandler();
-            else if (imageSource is StreamImageSource)
-                handler = new StreamImagesourceHandler();
-            else if (imageSource is UriImageSource)
-                handler = new ImageLoaderSourceHandler();
-            else
-                return null;
-
-            return await handler.LoadImageAsync(imageSource, Context);
         }
 
         private VrPanoramaView.Options GetOptions()

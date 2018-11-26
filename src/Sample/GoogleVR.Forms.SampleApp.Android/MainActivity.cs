@@ -18,6 +18,8 @@ namespace GoogleVR.Forms.SampleApp.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            VrImageLoader.Instance = new GlideVrImageLoader();
+
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
