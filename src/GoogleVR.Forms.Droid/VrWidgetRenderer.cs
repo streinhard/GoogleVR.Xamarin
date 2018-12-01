@@ -11,6 +11,23 @@ namespace GoogleVR.Forms
         {
         }
 
+        protected override void OnElementChanged(ElementChangedEventArgs<TView> e)
+        {
+            base.OnElementChanged(e);
+
+            if (e.OldElement != null)
+            {
+                e.OldElement.RenderingPaused -= OnRenderingPaused;
+                e.OldElement.RenderingResumed -= OnRenderingResumed;
+            }
+
+            if (e.NewElement != null)
+            {
+                e.NewElement.RenderingPaused += OnRenderingPaused;
+                e.NewElement.RenderingResumed += OnRenderingResumed;
+            }
+        }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -35,22 +52,32 @@ namespace GoogleVR.Forms
 
         private void UpdateInfoButtonEnabled()
         {
-            Control.SetInfoButtonEnabled(Element.InfoButtonEnabled);
+            Control?.SetInfoButtonEnabled(Element.InfoButtonEnabled);
         }
 
         private void UpdateTouchTrackingEnabled()
         {
-            Control.SetTouchTrackingEnabled(Element.TouchTrackingEnabled);
+            Control?.SetTouchTrackingEnabled(Element.TouchTrackingEnabled);
         }
 
         private void UpdateStereoModeButtonEnabled()
         {
-            Control.SetStereoModeButtonEnabled(Element.StereoModeButtonEnabled);
+            Control?.SetStereoModeButtonEnabled(Element.StereoModeButtonEnabled);
         }
 
         private void UpdateTransitionViewEnabled()
         {
-            Control.SetTransitionViewEnabled(Element.TransitionViewEnabled);
+            Control?.SetTransitionViewEnabled(Element.TransitionViewEnabled);
+        }
+
+        private void OnRenderingPaused(object sender, EventArgs e)
+        {
+            Control?.PauseRendering();
+        }
+
+        private void OnRenderingResumed(object sender, EventArgs e)
+        {
+            Control?.ResumeRendering();
         }
     }
 }

@@ -12,9 +12,9 @@
             VerticalOptions="FillAndExpand" />
         <Grid
             Padding="10"
-            RowSpacing="10">
+            RowSpacing="5">
             <Label
-                Text="Info Button Enabled"
+                Text="Info Button"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
                 Grid.Column="0" />
@@ -26,40 +26,53 @@
                 Grid.Column="1"/>
 
             <Label
-                Text="Touch Tracking Enabled"
+                Text="Touch Tracking"
                 VerticalTextAlignment="Center"
-                Grid.Row="1"
-                Grid.Column="0"/>
+                Grid.Row="0"
+                Grid.Column="2"/>
             <Switch
                 BindingContext="{x:Reference panorama}"
                 IsToggled="{Binding TouchTrackingEnabled}"
                 HorizontalOptions="FillAndExpand"
-                Grid.Row="1"
-                Grid.Column="1" />
+                Grid.Row="0"
+                Grid.Column="3" />
             
             <Label
-                Text="Stereo Mode Button Enabled"
+                Text="Stereo Mode"
                 VerticalTextAlignment="Center"
-                Grid.Row="2"
+                Grid.Row="1"
                 Grid.Column="0"/>
             <Switch
                 BindingContext="{x:Reference panorama}"
                 IsToggled="{Binding StereoModeButtonEnabled}"
                 HorizontalOptions="FillAndExpand"
-                Grid.Row="2"
+                Grid.Row="1"
                 Grid.Column="1" />
             
             <Label
-                Text="Transition View Enabled"
+                Text="Transition"
                 VerticalTextAlignment="Center"
-                Grid.Row="3"
-                Grid.Column="0"/>
+                Grid.Row="1"
+                Grid.Column="2"/>
             <Switch
                 BindingContext="{x:Reference panorama}"
                 IsToggled="{Binding TransitionViewEnabled}"
                 HorizontalOptions="FillAndExpand"
-                Grid.Row="3"
-                Grid.Column="1" />
+                Grid.Row="1"
+                Grid.Column="3" />
+            
+            <Button
+                Text="Pause Rendering"
+                Clicked="OnPauseRenderingClicked"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2" />
+            <Button
+                Text="Resume Rendering"
+                Clicked="OnResumeRenderingClicked"
+                Grid.Row="2"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"/>
         </Grid>
     </StackLayout>
 </ContentPage>

@@ -17,6 +17,9 @@ namespace GoogleVR.Forms
         public static BindableProperty TransitionViewEnabledProperty =
             BindableProperty.Create(nameof(TransitionViewEnabled), typeof(bool), typeof(VrWidget), true);
 
+        public event EventHandler RenderingPaused;
+        public event EventHandler RenderingResumed;
+
         public bool InfoButtonEnabled
         {
             get => (bool)GetValue(InfoButtonEnabledProperty);
@@ -39,6 +42,16 @@ namespace GoogleVR.Forms
         {
             get => (bool)GetValue(TransitionViewEnabledProperty);
             set => SetValue(TransitionViewEnabledProperty, value);
+        }
+
+        public void PauseRendering()
+        {
+            RenderingPaused?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void ResumeRendering()
+        {
+            RenderingResumed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -13,5 +13,15 @@ namespace GoogleVR.Forms.SampleApp
         {
             InitializeComponent();
         }
+
+        private void OnPauseRenderingClicked(object sender, System.EventArgs e)
+        {
+            panorama.PauseRendering();
+        }
+
+        private void OnResumeRenderingClicked(object sender, System.EventArgs e)
+        {
+            panorama.ResumeRendering();
+        }
     }
 }

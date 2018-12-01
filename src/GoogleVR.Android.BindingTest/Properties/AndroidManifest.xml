@@ -5,7 +5,8 @@
     android:versionName="1.0"
     package="bitforge.ch.GoogleVR.BindingTest">
     <uses-sdk
-        android:minSdkVersion="21" />
+        android:minSdkVersion="21"
+        android:targetSdkVersion="27" />
     <uses-permission
         android:name="android.permission.INTERNET" />
     <uses-permission
