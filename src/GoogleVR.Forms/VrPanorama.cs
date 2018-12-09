@@ -11,7 +11,6 @@ namespace GoogleVR.Forms
         public static BindableProperty SourceTypeProperty =
             BindableProperty.Create(nameof(SourceType), typeof(VrSourceType), typeof(VrPanorama), VrSourceType.Mono);
 
-
         public event EventHandler Clicked;
         public event EventHandler<DisplayModeChangedEventArgs> DisplayModeChanged;
         public event EventHandler LoadSuccess;

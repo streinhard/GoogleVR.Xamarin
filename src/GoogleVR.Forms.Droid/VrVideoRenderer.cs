@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Android.Content;
+using Android.Runtime;
 using GoogleVR.Forms;
 using GoogleVR.Widgets.Video;
 using Xamarin.Forms;
@@ -20,6 +21,7 @@ namespace GoogleVR.Forms
             if (Control == null)
             {
                 SetNativeControl(new VrVideoView(Context));
+                Control.SetEventListener(new VideoEventListener(this));
             }
 
             if (e.NewElement != null)
@@ -87,6 +89,56 @@ namespace GoogleVR.Forms
                 InputType = (int)Element.SourceType,
                 InputFormat = VrVideoView.Options.FormatDefault // TODO: Make configurable? Not supported on iOS :(
             };
+        }
+    }
+
+    class VideoEventListener : VrVideoEventListener
+    {
+        private VrVideoRenderer _renderer;
+
+        public VideoEventListener(IntPtr javaReference, JniHandleOwnership ownership) : base(javaReference, ownership)
+        {
+        }
+
+        public VideoEventListener(VrVideoRenderer renderer)
+        {
+            this._renderer = renderer;
+        }
+
+        public override void OnClick()
+        {
+            _renderer?.Element?._OnClicked();
+        }
+
+        public override void OnDisplayModeChanged(int newDisplayMode)
+        {
+            _renderer?.Element?._OnDisplayModeChanged((VrDisplayMode)newDisplayMode);
+        }
+
+        public override void OnLoadSuccess()
+        {
+            if (_renderer.Control == null) return;
+
+            var videoDuration = _renderer.Control.Duration;
+            _renderer?.Element?._OnLoadSuccess(videoDuration);
+        }
+
+        public override void OnLoadError(string errorMessage)
+        {
+            _renderer?.Element?._OnLoadError(errorMessage);
+        }
+
+        public override void OnNewFrame()
+        {
+            if (_renderer.Control == null) return;
+
+            var position = _renderer.Control.CurrentPosition;
+            _renderer?.Element?._OnNewFrame(position);
+        }
+
+        public override void OnCompletion()
+        {
+            _renderer?.Element?._OnCompleted();
         }
     }
 }
