@@ -69,12 +69,12 @@ namespace GoogleVR.Forms.SampleApp
 
         private void OnPlay(object sender, EventArgs e)
         {
-            video.Play();
+            video.PlayVideo();
         }
 
         private void OnPause(object sender, EventArgs e)
         {
-            video.Pause();
+            video.PauseVideo();
         }
     }
 }

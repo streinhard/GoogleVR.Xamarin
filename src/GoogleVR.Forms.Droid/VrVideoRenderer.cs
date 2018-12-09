@@ -10,7 +10,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(VrVideo), typeof(VrVideoRenderer))]
 namespace GoogleVR.Forms
 {
-    public class VrVideoRenderer : VrWidgetRender<VrVideo, VrVideoView>
+    public class VrVideoRenderer : VrWidgetRender<VrVideo, VrVideoView>, IVrVideoRenderer
     {
         public VrVideoRenderer(Context context) : base(context) {}
 
@@ -26,19 +26,14 @@ namespace GoogleVR.Forms
 
             if (e.OldElement != null)
             {
-                e.NewElement._PlayVideo -= OnPlayVideo;
-                e.NewElement._PauseVideo -= OnPauseVideo;
-                e.OldElement._SeekTo -= OnSeekTo;
+                e.OldElement.Renderer = null;
             }
 
             if (e.NewElement != null)
             {
+                e.NewElement.Renderer = this;
                 UpdateWidget();
                 LoadVideo();
-
-                e.NewElement._PlayVideo += OnPlayVideo;
-                e.NewElement._PauseVideo += OnPauseVideo;
-                e.NewElement._SeekTo += OnSeekTo;
             }
         }
 
@@ -102,19 +97,19 @@ namespace GoogleVR.Forms
             };
         }
 
-        private void OnPlayVideo(object sender, EventArgs e)
+        public void PlayVideo()
         {
             Control?.PlayVideo();
         }
 
-        private void OnPauseVideo(object sender, EventArgs e)
+        public void PauseVideo()
         {
             Control.PauseVideo();
         }
 
-        private void OnSeekTo(object sender, SeekToEventArgs e)
+        public void SeekTo(long position)
         {
-            Control?.SeekTo(e.Position);
+            Control?.SeekTo(position);
         }
     }
 

@@ -14,9 +14,7 @@ namespace GoogleVR.Forms
         public event EventHandler<NewVideoFrameEventArgs> PositionChanged;
         public event EventHandler Completed;
 
-        public event EventHandler<SeekToEventArgs> _SeekTo;
-        public event EventHandler _PlayVideo;
-        public event EventHandler _PauseVideo;
+        public IVrVideoRenderer Renderer { get; set; } 
 
         public string VideoSource
         {
@@ -32,17 +30,17 @@ namespace GoogleVR.Forms
 
         public void SeekTo(long position)
         {
-            _SeekTo?.Invoke(this, new SeekToEventArgs { Position = position });
+            Renderer?.SeekTo(position);
         }
 
-        public void Play()
+        public void PlayVideo()
         {
-            _PlayVideo?.Invoke(this, EventArgs.Empty);
+            Renderer.PlayVideo();
         }
 
-        public void Pause()
+        public void PauseVideo()
         {
-            _PauseVideo?.Invoke(this, EventArgs.Empty);
+            Renderer.PauseVideo();
         }
 
         public void _OnNewFrame(long position)
