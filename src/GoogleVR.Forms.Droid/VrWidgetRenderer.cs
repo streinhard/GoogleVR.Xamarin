@@ -17,14 +17,14 @@ namespace GoogleVR.Forms
 
             if (e.OldElement != null)
             {
-                e.OldElement._RenderingPaused -= OnRenderingPaused;
-                e.OldElement._RenderingResumed -= OnRenderingResumed;
+                e.OldElement.RenderingPaused -= OnRenderingPaused;
+                e.OldElement.RenderingResumed -= OnRenderingResumed;
             }
 
             if (e.NewElement != null)
             {
-                e.NewElement._RenderingPaused += OnRenderingPaused;
-                e.NewElement._RenderingResumed += OnRenderingResumed;
+                e.NewElement.RenderingPaused += OnRenderingPaused;
+                e.NewElement.RenderingResumed += OnRenderingResumed;
             }
         }
 

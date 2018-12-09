@@ -128,12 +128,12 @@ namespace GoogleVR.Forms
 
         public override void OnClick()
         {
-            _renderer?.Element?._OnClicked();
+            _renderer?.Element?.OnClicked();
         }
 
         public override void OnDisplayModeChanged(int newDisplayMode)
         {
-            _renderer?.Element?._OnDisplayModeChanged((VrDisplayMode)newDisplayMode);
+            _renderer?.Element?.OnDisplayModeChanged((VrDisplayMode)newDisplayMode);
         }
 
         public override void OnLoadSuccess()
@@ -141,12 +141,12 @@ namespace GoogleVR.Forms
             if (_renderer.Control == null) return;
 
             var videoDuration = _renderer.Control.Duration;
-            _renderer?.Element?._OnLoadSuccess(videoDuration);
+            _renderer?.Element?.OnLoadSuccess(videoDuration);
         }
 
         public override void OnLoadError(string errorMessage)
         {
-            _renderer?.Element?._OnLoadError(errorMessage);
+            _renderer?.Element?.OnLoadError(errorMessage);
         }
 
         public override void OnNewFrame()
@@ -154,12 +154,12 @@ namespace GoogleVR.Forms
             if (_renderer.Control == null) return;
 
             var position = _renderer.Control.CurrentPosition;
-            _renderer?.Element?._OnNewFrame(position);
+            _renderer?.Element?.OnNewFrame(position);
         }
 
         public override void OnCompletion()
         {
-            _renderer?.Element?._OnCompleted();
+            _renderer?.Element?.OnCompleted();
         }
     }
 }

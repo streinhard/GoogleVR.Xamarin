@@ -85,22 +85,22 @@ namespace GoogleVR.Forms
 
             public override void OnClick()
             {
-                _renderer?.Element?._OnClicked();
+                _renderer?.Element?.OnClicked();
             }
 
             public override void OnDisplayModeChanged(int newDisplayMode)
             {
-                _renderer?.Element?._OnDisplayModeChanged((VrDisplayMode)newDisplayMode);
+                _renderer?.Element?.OnDisplayModeChanged((VrDisplayMode)newDisplayMode);
             }
 
             public override void OnLoadSuccess()
             {
-                _renderer?.Element?._OnLoadSuccess();
+                _renderer?.Element?.OnLoadSuccess();
             }
 
             public override void OnLoadError(string errorMessage)
             {
-                _renderer?.Element?._OnLoadError(errorMessage);
+                _renderer?.Element?.OnLoadError(errorMessage);
             }
         }
     }

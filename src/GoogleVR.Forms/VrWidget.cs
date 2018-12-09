@@ -22,8 +22,8 @@ namespace GoogleVR.Forms
         public event EventHandler<LoadSuccessEventArgs> LoadSuccess;
         public event EventHandler<LoadErrorEventArgs> LoadError;
 
-        public event EventHandler _RenderingPaused;
-        public event EventHandler _RenderingResumed;
+        internal event EventHandler RenderingPaused;
+        internal event EventHandler RenderingResumed;
 
         public bool InfoButtonEnabled
         {
@@ -51,20 +51,20 @@ namespace GoogleVR.Forms
 
         public void PauseRendering()
         {
-            _RenderingPaused?.Invoke(this, EventArgs.Empty);
+            RenderingPaused?.Invoke(this, EventArgs.Empty);
         }
 
         public void ResumeRendering()
         {
-            _RenderingResumed?.Invoke(this, EventArgs.Empty);
+            RenderingResumed?.Invoke(this, EventArgs.Empty);
         }
 
-        public void _OnClicked()
+        internal void OnClicked()
         {
             Clicked?.Invoke(this, EventArgs.Empty);
         }
 
-        public void _OnDisplayModeChanged(VrDisplayMode newDisplayMode)
+        internal void OnDisplayModeChanged(VrDisplayMode newDisplayMode)
         {
             DisplayModeChanged?.Invoke(this, new DisplayModeChangedEventArgs
             {
@@ -72,7 +72,7 @@ namespace GoogleVR.Forms
             });
         }
 
-        public void _OnLoadSuccess(long? duration = null)
+        internal void OnLoadSuccess(long? duration = null)
         {
             LoadSuccess?.Invoke(this, new LoadSuccessEventArgs
             {
@@ -80,7 +80,7 @@ namespace GoogleVR.Forms
             });
         }
 
-        public void _OnLoadError(string errorMessage)
+        internal void OnLoadError(string errorMessage)
         {
             LoadError?.Invoke(this, new LoadErrorEventArgs
             {

@@ -14,7 +14,7 @@ namespace GoogleVR.Forms
         public event EventHandler<NewVideoFrameEventArgs> PositionChanged;
         public event EventHandler Completed;
 
-        public IVrVideoRenderer Renderer { get; set; } 
+        internal IVrVideoRenderer Renderer { get; set; }
 
         public string VideoSource
         {
@@ -35,15 +35,15 @@ namespace GoogleVR.Forms
 
         public void PlayVideo()
         {
-            Renderer.PlayVideo();
+            Renderer?.PlayVideo();
         }
 
         public void PauseVideo()
         {
-            Renderer.PauseVideo();
+            Renderer?.PauseVideo();
         }
 
-        public void _OnNewFrame(long position)
+        internal void OnNewFrame(long position)
         {
             PositionChanged?.Invoke(this, new NewVideoFrameEventArgs
             {
@@ -51,7 +51,7 @@ namespace GoogleVR.Forms
             });
         }
 
-        public void _OnCompleted()
+        internal void OnCompleted()
         {
             Completed?.Invoke(this, EventArgs.Empty);
         }

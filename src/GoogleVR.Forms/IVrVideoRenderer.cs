@@ -2,7 +2,7 @@
 
 namespace GoogleVR.Forms
 {
-    public interface IVrVideoRenderer
+    internal interface IVrVideoRenderer
     {
         void PlayVideo();
         void PauseVideo();
