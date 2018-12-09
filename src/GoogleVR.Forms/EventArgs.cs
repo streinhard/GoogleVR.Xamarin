@@ -6,9 +6,9 @@ namespace GoogleVR.Forms
         public VrDisplayMode DisplayMode;
     }
 
-    public class LoadVideoSuccessEventArgs : EventArgs
+    public class LoadSuccessEventArgs : EventArgs
     {
-        public long VideoDuration;
+        public long? Duration;
     }
 
     public class LoadErrorEventArgs : EventArgs

@@ -34,12 +34,15 @@ namespace GoogleVR.Forms.SampleApp
             System.Diagnostics.Debug.WriteLine($"New Display Mode: {e.DisplayMode}");
         }
 
-        private void OnLoadSuccess(object sender, LoadVideoSuccessEventArgs e)
+        private void OnLoadSuccess(object sender, LoadSuccessEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Loaded successfully");
 
             positionSlider.IsVisible = true;
-            positionSlider.Maximum = e.VideoDuration;
+            if (e.Duration.HasValue)
+            {
+                positionSlider.Maximum = e.Duration.Value;
+            }
         }
 
         private void OnLoadError(object sender, LoadErrorEventArgs e)

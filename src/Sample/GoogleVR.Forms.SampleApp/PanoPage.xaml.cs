@@ -34,7 +34,7 @@ namespace GoogleVR.Forms.SampleApp
             System.Diagnostics.Debug.WriteLine($"New Display Mode: {e.DisplayMode}");
         }
 
-        private void OnLoadSuccess(object sender, EventArgs e)
+        private void OnLoadSuccess(object sender, LoadSuccessEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Loaded successfully");
         }

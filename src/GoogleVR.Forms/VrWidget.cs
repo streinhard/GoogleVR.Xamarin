@@ -17,6 +17,11 @@ namespace GoogleVR.Forms
         public static BindableProperty TransitionViewEnabledProperty =
             BindableProperty.Create(nameof(TransitionViewEnabled), typeof(bool), typeof(VrWidget), true);
 
+        public event EventHandler Clicked;
+        public event EventHandler<DisplayModeChangedEventArgs> DisplayModeChanged;
+        public event EventHandler<LoadSuccessEventArgs> LoadSuccess;
+        public event EventHandler<LoadErrorEventArgs> LoadError;
+
         public event EventHandler _RenderingPaused;
         public event EventHandler _RenderingResumed;
 
@@ -52,6 +57,35 @@ namespace GoogleVR.Forms
         public void ResumeRendering()
         {
             _RenderingResumed?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void _OnClicked()
+        {
+            Clicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void _OnDisplayModeChanged(VrDisplayMode newDisplayMode)
+        {
+            DisplayModeChanged?.Invoke(this, new DisplayModeChangedEventArgs
+            {
+                DisplayMode = newDisplayMode
+            });
+        }
+
+        public void _OnLoadSuccess(long? duration = null)
+        {
+            LoadSuccess?.Invoke(this, new LoadSuccessEventArgs
+            {
+                Duration = duration
+            });
+        }
+
+        public void _OnLoadError(string errorMessage)
+        {
+            LoadError?.Invoke(this, new LoadErrorEventArgs
+            {
+                ErrorMessage = errorMessage
+            });
         }
     }
 }
