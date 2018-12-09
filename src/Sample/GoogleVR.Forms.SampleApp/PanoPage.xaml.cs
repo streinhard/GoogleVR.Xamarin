@@ -24,22 +24,22 @@ namespace GoogleVR.Forms.SampleApp
             panorama.ResumeRendering();
         }
 
-        void OnClicked(object sender, EventArgs e)
+        private void OnClicked(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Panorama clicked");
         }
 
-        void OnDisplayModeChanged(object sender, DisplayModeChangedEventArgs e)
+        private void OnDisplayModeChanged(object sender, DisplayModeChangedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"New Display Mode: {e.DisplayMode}");
         }
 
-        void OnLoadSuccess(object sender, EventArgs e)
+        private void OnLoadSuccess(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Loaded successfully");
         }
 
-        void OnLoadError(object sender, LoadErrorEventArgs e)
+        private void OnLoadError(object sender, LoadErrorEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"Load error: {e.ErrorMessage}");
         }

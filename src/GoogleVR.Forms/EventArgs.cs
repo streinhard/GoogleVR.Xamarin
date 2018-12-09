@@ -20,4 +20,9 @@ namespace GoogleVR.Forms
     {
         public long Position;
     }
+
+    public class SeekToEventArgs : EventArgs
+    {
+        public long Position;
+    }
 }

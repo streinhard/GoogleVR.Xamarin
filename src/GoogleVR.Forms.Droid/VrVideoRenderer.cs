@@ -24,10 +24,17 @@ namespace GoogleVR.Forms
                 Control.SetEventListener(new VideoEventListener(this));
             }
 
+            if (e.OldElement != null)
+            {
+                e.OldElement._SeekTo -= OnSeekTo;
+            }
+
             if (e.NewElement != null)
             {
                 UpdateWidget();
                 LoadVideo();
+
+                e.NewElement._SeekTo += OnSeekTo;;
             }
         }
 
@@ -89,6 +96,11 @@ namespace GoogleVR.Forms
                 InputType = (int)Element.SourceType,
                 InputFormat = VrVideoView.Options.FormatDefault // TODO: Make configurable? Not supported on iOS :(
             };
+        }
+
+        private void OnSeekTo(object sender, SeekToEventArgs e)
+        {
+            Control?.SeekTo(e.Position);
         }
     }
 

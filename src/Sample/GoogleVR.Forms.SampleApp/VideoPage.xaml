@@ -22,6 +22,7 @@
             <Slider
                 x:Name="positionSlider"
                 IsVisible="false"
+                ValueChanged="OnVideoSliderValueChanged"
                 Minimum="0"
                 Maximum="10" />
         </Grid>

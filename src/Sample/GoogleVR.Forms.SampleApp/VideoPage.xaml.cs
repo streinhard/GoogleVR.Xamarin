@@ -7,6 +7,8 @@ namespace GoogleVR.Forms.SampleApp
     {
         public VrVideo Video => video;
 
+        private volatile bool _isSliderChangedFromUser = true;
+
         public VideoPage()
         {
             InitializeComponent();
@@ -22,17 +24,17 @@ namespace GoogleVR.Forms.SampleApp
             video.ResumeRendering();
         }
 
-        void OnClicked(object sender, EventArgs e)
+        private void OnClicked(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Video clicked");
         }
 
-        void OnDisplayModeChanged(object sender, DisplayModeChangedEventArgs e)
+        private void OnDisplayModeChanged(object sender, DisplayModeChangedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"New Display Mode: {e.DisplayMode}");
         }
 
-        void OnLoadSuccess(object sender, LoadVideoSuccessEventArgs e)
+        private void OnLoadSuccess(object sender, LoadVideoSuccessEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Loaded successfully");
 
@@ -40,14 +42,26 @@ namespace GoogleVR.Forms.SampleApp
             positionSlider.Maximum = e.VideoDuration;
         }
 
-        void OnLoadError(object sender, LoadErrorEventArgs e)
+        private void OnLoadError(object sender, LoadErrorEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"Load error: {e.ErrorMessage}");
         }
 
-        void OnPositionChanged(object sender, NewVideoFrameEventArgs e)
+        private void OnPositionChanged(object sender, NewVideoFrameEventArgs e)
         {
+            // Ugly, but a functional hack to prevent constant seeks
+            _isSliderChangedFromUser = false;
             positionSlider.Value = e.Position;
+            _isSliderChangedFromUser = true;
+        }
+
+        private void OnVideoSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            if (_isSliderChangedFromUser)
+            {
+                System.Diagnostics.Debug.WriteLine($"SeekTo({e.NewValue})");
+                video.SeekTo((long)e.NewValue);
+            }
         }
     }
 }

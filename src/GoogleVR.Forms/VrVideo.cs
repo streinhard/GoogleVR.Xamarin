@@ -18,6 +18,8 @@ namespace GoogleVR.Forms
         public event EventHandler<NewVideoFrameEventArgs> PositionChanged;
         public event EventHandler Completed;
 
+        public event EventHandler<SeekToEventArgs> _SeekTo;
+
         public string VideoSource
         {
             get => (string)GetValue(VideoSourceProperty);
@@ -28,6 +30,11 @@ namespace GoogleVR.Forms
         {
             get => (VrSourceType)GetValue(SourceTypeProperty);
             set => SetValue(SourceTypeProperty, value);
+        }
+
+        public void SeekTo(long position)
+        {
+            _SeekTo?.Invoke(this, new SeekToEventArgs { Position = position });
         }
 
         public void _OnClicked()

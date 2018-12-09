@@ -28,12 +28,12 @@ namespace GoogleVR.Forms
             set => SetValue(SourceTypeProperty, value);
         }
 
-        public void OnClicked()
+        public void _OnClicked()
         {
             Clicked?.Invoke(this, EventArgs.Empty);
         }
 
-        public void OnDisplayModeChanged(VrDisplayMode newDisplayMode)
+        public void _OnDisplayModeChanged(VrDisplayMode newDisplayMode)
         {
             DisplayModeChanged?.Invoke(this, new DisplayModeChangedEventArgs
             {
@@ -41,12 +41,12 @@ namespace GoogleVR.Forms
             });
         }
 
-        public void OnLoadSuccess()
+        public void _OnLoadSuccess()
         {
             LoadSuccess?.Invoke(this, EventArgs.Empty);
         }
 
-        public void OnLoadError(string errorMessage)
+        public void _OnLoadError(string errorMessage)
         {
             LoadError?.Invoke(this, new LoadErrorEventArgs
             {
