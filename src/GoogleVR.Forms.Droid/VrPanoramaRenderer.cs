@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using Android.Content;
-using Android.Graphics;
-using Android.Util;
+using Android.Runtime;
 using GoogleVR.Forms;
 using GoogleVR.Widgets.Pano;
 using Xamarin.Forms;
@@ -25,6 +23,7 @@ namespace GoogleVR.Forms
             if (Control == null)
             {
                 SetNativeControl(new VrPanoramaView(Context));
+                Control.SetEventListener(new PanoramaEventListener(this));
             }
 
             if (e.NewElement != null)
@@ -69,6 +68,40 @@ namespace GoogleVR.Forms
             {
                 InputType = (int)Element.SourceType
             };
+        }
+
+        private class PanoramaEventListener : VrPanoramaEventListener
+        {
+            private VrPanoramaRenderer _renderer;
+
+            public PanoramaEventListener(IntPtr javaReference, JniHandleOwnership ownership) : base(javaReference, ownership)
+            {
+            }
+
+            public PanoramaEventListener(VrPanoramaRenderer renderer)
+            {
+                this._renderer = renderer;
+            }
+
+            public override void OnClick()
+            {
+                _renderer?.Element?.OnClicked();
+            }
+
+            public override void OnDisplayModeChanged(int newDisplayMode)
+            {
+                _renderer?.Element?.OnDisplayModeChanged((VrDisplayMode)newDisplayMode);
+            }
+
+            public override void OnLoadSuccess()
+            {
+                _renderer?.Element?.OnLoadSuccess();
+            }
+
+            public override void OnLoadError(string errorMessage)
+            {
+                _renderer?.Element?.OnLoadError(errorMessage);
+            }
         }
     }
 }

@@ -9,7 +9,11 @@
     <StackLayout>
         <gvr:VrPanorama
             x:Name="panorama"
-            VerticalOptions="FillAndExpand" />
+            VerticalOptions="FillAndExpand"
+            Clicked="OnClicked"
+            DisplayModeChanged="OnDisplayModeChanged"
+            LoadSuccess="OnLoadSuccess"
+            LoadError="OnLoadError" />
         <Grid
             Padding="10"
             RowSpacing="5">
