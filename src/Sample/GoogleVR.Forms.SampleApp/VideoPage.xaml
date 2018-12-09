@@ -24,7 +24,20 @@
                 IsVisible="false"
                 ValueChanged="OnVideoSliderValueChanged"
                 Minimum="0"
-                Maximum="10" />
+                Maximum="10"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"/>
+            <Button
+                Text="Play"
+                Clicked="OnPlay"
+                Grid.Row="1"
+                Grid.Column="0" />
+            <Button
+                Text="Pause"
+                Clicked="OnPause"
+                Grid.Row="1"
+                Grid.Column="1" />
         </Grid>
     </StackLayout>
 </ContentPage>

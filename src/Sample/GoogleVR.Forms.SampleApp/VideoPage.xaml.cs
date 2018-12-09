@@ -63,5 +63,15 @@ namespace GoogleVR.Forms.SampleApp
                 video.SeekTo((long)e.NewValue);
             }
         }
+
+        private void OnPlay(object sender, EventArgs e)
+        {
+            video.Play();
+        }
+
+        private void OnPause(object sender, EventArgs e)
+        {
+            video.Pause();
+        }
     }
 }

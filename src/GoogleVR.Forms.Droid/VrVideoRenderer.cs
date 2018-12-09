@@ -26,6 +26,8 @@ namespace GoogleVR.Forms
 
             if (e.OldElement != null)
             {
+                e.NewElement._PlayVideo -= OnPlayVideo;
+                e.NewElement._PauseVideo -= OnPauseVideo;
                 e.OldElement._SeekTo -= OnSeekTo;
             }
 
@@ -34,7 +36,9 @@ namespace GoogleVR.Forms
                 UpdateWidget();
                 LoadVideo();
 
-                e.NewElement._SeekTo += OnSeekTo;;
+                e.NewElement._PlayVideo += OnPlayVideo;
+                e.NewElement._PauseVideo += OnPauseVideo;
+                e.NewElement._SeekTo += OnSeekTo;
             }
         }
 
@@ -96,6 +100,16 @@ namespace GoogleVR.Forms
                 InputType = (int)Element.SourceType,
                 InputFormat = VrVideoView.Options.FormatDefault // TODO: Make configurable? Not supported on iOS :(
             };
+        }
+
+        private void OnPlayVideo(object sender, EventArgs e)
+        {
+            Control?.PlayVideo();
+        }
+
+        private void OnPauseVideo(object sender, EventArgs e)
+        {
+            Control.PauseVideo();
         }
 
         private void OnSeekTo(object sender, SeekToEventArgs e)
