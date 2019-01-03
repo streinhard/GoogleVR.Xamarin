@@ -17,6 +17,8 @@
         <Grid
             Padding="10"
             RowSpacing="5">
+
+            <!-- Info Button -->
             <Label
                 Text="Info Button"
                 VerticalTextAlignment="Center"
@@ -29,8 +31,9 @@
                 Grid.Row="0"
                 Grid.Column="1"/>
 
+            <!-- Touch Tracking -->
             <Label
-                Text="Touch Tracking"
+                Text="Touches"
                 VerticalTextAlignment="Center"
                 Grid.Row="0"
                 Grid.Column="2"/>
@@ -40,9 +43,10 @@
                 HorizontalOptions="FillAndExpand"
                 Grid.Row="0"
                 Grid.Column="3" />
-            
+
+            <!-- Cardboard Mode -->
             <Label
-                Text="Stereo Mode"
+                Text="Cardboard"
                 VerticalTextAlignment="Center"
                 Grid.Row="1"
                 Grid.Column="0"/>
@@ -52,31 +56,19 @@
                 HorizontalOptions="FillAndExpand"
                 Grid.Row="1"
                 Grid.Column="1" />
-            
+
+            <!-- Fullscreen -->
             <Label
-                Text="Transition"
+                Text="Fullscreen"
                 VerticalTextAlignment="Center"
                 Grid.Row="1"
                 Grid.Column="2"/>
             <Switch
                 BindingContext="{x:Reference panorama}"
-                IsToggled="{Binding TransitionViewEnabled}"
+                IsToggled="{Binding FullscreenButtonEnabled}"
                 HorizontalOptions="FillAndExpand"
                 Grid.Row="1"
                 Grid.Column="3" />
-            
-            <Button
-                Text="Pause Rendering"
-                Clicked="OnPauseRenderingClicked"
-                Grid.Row="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="2" />
-            <Button
-                Text="Resume Rendering"
-                Clicked="OnResumeRenderingClicked"
-                Grid.Row="2"
-                Grid.Column="2"
-                Grid.ColumnSpan="2"/>
         </Grid>
     </StackLayout>
 </ContentPage>

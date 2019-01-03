@@ -17,6 +17,9 @@ namespace GoogleVR.Forms
         public static BindableProperty TransitionViewEnabledProperty =
             BindableProperty.Create(nameof(TransitionViewEnabled), typeof(bool), typeof(VrWidget), true);
 
+        public static BindableProperty FullscreenButtonEnabledProperty =
+            BindableProperty.Create(nameof(FullscreenButtonEnabled), typeof(bool), typeof(VrWidget), true);
+
         public event EventHandler Clicked;
         public event EventHandler<DisplayModeChangedEventArgs> DisplayModeChanged;
         public event EventHandler<LoadSuccessEventArgs> LoadSuccess;
@@ -47,6 +50,12 @@ namespace GoogleVR.Forms
         {
             get => (bool)GetValue(TransitionViewEnabledProperty);
             set => SetValue(TransitionViewEnabledProperty, value);
+        }
+
+        public bool FullscreenButtonEnabled
+        {
+            get => (bool)GetValue(FullscreenButtonEnabledProperty);
+            set => SetValue(FullscreenButtonEnabledProperty, value);
         }
 
         public void PauseRendering()

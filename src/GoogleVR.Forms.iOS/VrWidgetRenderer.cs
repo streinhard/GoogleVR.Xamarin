@@ -1,31 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
-using GoogleVR.Widgets.Common;
-using Xamarin.Forms.Platform.Android;
+using GoogleVR.iOS;
+using Xamarin.Forms.Platform.iOS;
 
 namespace GoogleVR.Forms
 {
-    public abstract class VrWidgetRender<TView, TNativeView> : ViewRenderer<TView, TNativeView> where TView : VrWidget where TNativeView : VrWidgetView
+    public abstract class VrWidgetRender<TView, TNativeView> : ViewRenderer<TView, TNativeView> where TView : VrWidget where TNativeView : WidgetView
     {
-        protected VrWidgetRender(Android.Content.Context context) : base(context)
-        {
-        }
-
         protected override void OnElementChanged(ElementChangedEventArgs<TView> e)
         {
             base.OnElementChanged(e);
 
-            if (e.OldElement != null)
-            {
-                e.OldElement.RenderingPaused -= OnRenderingPaused;
-                e.OldElement.RenderingResumed -= OnRenderingResumed;
-            }
-
-            if (e.NewElement != null)
-            {
-                e.NewElement.RenderingPaused += OnRenderingPaused;
-                e.NewElement.RenderingResumed += OnRenderingResumed;
-            }
+            // There are no PauseRendering() and ResumeRendering() methods on iOS, so no need to subscribe to those events
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -42,7 +28,6 @@ namespace GoogleVR.Forms
                 UpdateTransitionViewEnabled();
             else if (e.PropertyName == VrWidget.FullscreenButtonEnabledProperty.PropertyName)
                 UpdateFullscreenButtonEnabled();
-
         }
 
         protected void UpdateWidget()
@@ -56,37 +41,28 @@ namespace GoogleVR.Forms
 
         private void UpdateInfoButtonEnabled()
         {
-            Control?.SetInfoButtonEnabled(Element.InfoButtonEnabled);
+            Control.EnableInfoButton = Element.InfoButtonEnabled;
         }
 
         private void UpdateTouchTrackingEnabled()
         {
-            Control?.SetTouchTrackingEnabled(Element.TouchTrackingEnabled);
+            Control.EnableTouchTracking =  Element.TouchTrackingEnabled;
         }
 
         private void UpdateStereoModeButtonEnabled()
         {
-            Control?.SetStereoModeButtonEnabled(Element.StereoModeButtonEnabled);
+            Control.EnableCardboardButton = Element.StereoModeButtonEnabled;
         }
 
         private void UpdateTransitionViewEnabled()
         {
-            Control?.SetTransitionViewEnabled(Element.TransitionViewEnabled);
+            Control.HidesTransitionView = !Element.TransitionViewEnabled;
         }
 
         private void UpdateFullscreenButtonEnabled()
         {
-            Control?.SetFullscreenButtonEnabled(Element.FullscreenButtonEnabled);
+            Control.EnableFullscreenButton = Element.FullscreenButtonEnabled;
         }
 
-        private void OnRenderingPaused(object sender, EventArgs e)
-        {
-            Control?.PauseRendering();
-        }
-
-        private void OnRenderingResumed(object sender, EventArgs e)
-        {
-            Control?.ResumeRendering();
-        }
     }
 }

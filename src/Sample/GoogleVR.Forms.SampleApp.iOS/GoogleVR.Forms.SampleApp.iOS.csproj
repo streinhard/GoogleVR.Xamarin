@@ -28,6 +28,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -159,12 +160,16 @@
       <Project>{A62BDFBC-6A2D-429F-A168-C9115B394ED1}</Project>
       <Name>GoogleVR.Forms.iOS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.Forms\GoogleVR.Forms.csproj">
+      <Project>{E3193E86-AA87-48AD-B3C4-C7A71402F450}</Project>
+      <Name>GoogleVR.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Resources\test_1080_stereo.mp4" />
-    <AndroidAsset Include="Resources\test_1920_mono.mp4" />
-    <AndroidAsset Include="Resources\test_2k_mono.jpg" />
-    <AndroidAsset Include="Resources\test_2k_stereo.jpg" />
+    <BundleResource Include="Resources\test_1080_stereo.mp4" />
+    <BundleResource Include="Resources\test_1920_mono.mp4" />
+    <BundleResource Include="Resources\test_2k_mono.jpg" />
+    <BundleResource Include="Resources\test_2k_stereo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

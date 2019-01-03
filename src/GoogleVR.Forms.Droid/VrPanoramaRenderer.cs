@@ -72,7 +72,7 @@ namespace GoogleVR.Forms
 
         private class PanoramaEventListener : VrPanoramaEventListener
         {
-            private VrPanoramaRenderer _renderer;
+            private readonly VrPanoramaRenderer _renderer;
 
             public PanoramaEventListener(IntPtr javaReference, JniHandleOwnership ownership) : base(javaReference, ownership)
             {
