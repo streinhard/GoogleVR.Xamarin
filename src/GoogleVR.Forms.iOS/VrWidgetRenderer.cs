@@ -41,28 +41,32 @@ namespace GoogleVR.Forms
 
         private void UpdateInfoButtonEnabled()
         {
+            if (Control == null) return;
             Control.EnableInfoButton = Element.InfoButtonEnabled;
         }
 
         private void UpdateTouchTrackingEnabled()
         {
-            Control.EnableTouchTracking =  Element.TouchTrackingEnabled;
+            if (Control == null) return;
+            Control.EnableTouchTracking = Element.TouchTrackingEnabled;
         }
 
         private void UpdateStereoModeButtonEnabled()
         {
+            if (Control == null) return;
             Control.EnableCardboardButton = Element.StereoModeButtonEnabled;
         }
 
         private void UpdateTransitionViewEnabled()
         {
+            if (Control == null) return;
             Control.HidesTransitionView = !Element.TransitionViewEnabled;
         }
 
         private void UpdateFullscreenButtonEnabled()
         {
+            if (Control == null) return;
             Control.EnableFullscreenButton = Element.FullscreenButtonEnabled;
         }
-
     }
 }
