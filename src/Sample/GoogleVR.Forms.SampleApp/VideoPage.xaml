@@ -5,7 +5,8 @@
     xmlns:gvr="clr-namespace:GoogleVR.Forms;assembly=GoogleVR.Forms"
     x:Class="GoogleVR.Forms.SampleApp.VideoPage"
     Title="Video Widget">
-     <StackLayout>
+     <StackLayout
+        Spacing="0">
         <gvr:VrVideo
             x:Name="video"
             VerticalOptions="FillAndExpand"
@@ -15,29 +16,16 @@
             LoadSuccess="OnLoadSuccess"
             LoadError="OnLoadError"
             PositionChanged="OnPositionChanged"
-        />
-        <Grid
-            Padding="10"
-            RowSpacing="5">
+            Completed="OnCompleted"/>
+        <ContentView
+            Padding="0,10">
             <Slider
                 x:Name="positionSlider"
                 IsVisible="false"
                 ValueChanged="OnVideoSliderValueChanged"
                 Minimum="0"
                 Maximum="10"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"/>
-            <Button
-                Text="Play"
-                Clicked="OnPlay"
-                Grid.Row="1"
-                Grid.Column="0" />
-            <Button
-                Text="Pause"
-                Clicked="OnPause"
-                Grid.Row="1"
-                Grid.Column="1" />
-        </Grid>
+                MinimumTrackColor="#FF4081" />
+        </ContentView>
     </StackLayout>
 </ContentPage>

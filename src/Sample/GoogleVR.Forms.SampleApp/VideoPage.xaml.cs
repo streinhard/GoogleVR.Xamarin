@@ -7,26 +7,26 @@ namespace GoogleVR.Forms.SampleApp
     {
         public VrVideo Video => video;
 
-        private volatile bool _isSliderChangedFromUser = true;
+        private bool _isSliderChangedFromUser = true;
+        private bool _isPlaying;
 
         public VideoPage()
         {
             InitializeComponent();
         }
 
-        private void OnPauseRenderingClicked(object sender, EventArgs e)
-        {
-            video.PauseRendering();
-        }
-
-        private void OnResumeRenderingClicked(object sender, EventArgs e)
-        {
-            video.ResumeRendering();
-        }
-
         private void OnClicked(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Video clicked");
+            if (_isPlaying)
+            {
+                video.PauseVideo();
+            }
+            else
+            {
+                video.PlayVideo();
+            }
+
+            _isPlaying = !_isPlaying;
         }
 
         private void OnDisplayModeChanged(object sender, DisplayModeChangedEventArgs e)
@@ -37,6 +37,8 @@ namespace GoogleVR.Forms.SampleApp
         private void OnLoadSuccess(object sender, LoadSuccessEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Loaded successfully");
+
+            _isPlaying = true;
 
             positionSlider.IsVisible = true;
             if (e.Duration.HasValue)
@@ -52,7 +54,7 @@ namespace GoogleVR.Forms.SampleApp
 
         private void OnPositionChanged(object sender, NewVideoFrameEventArgs e)
         {
-            // Ugly, but a functional hack to prevent constant seeks
+            // Ugly, but functional hack to prevent constant seeks
             _isSliderChangedFromUser = false;
             positionSlider.Value = e.Position;
             _isSliderChangedFromUser = true;
@@ -67,14 +69,10 @@ namespace GoogleVR.Forms.SampleApp
             }
         }
 
-        private void OnPlay(object sender, EventArgs e)
+        private void OnCompleted(object sender, EventArgs e)
         {
-            video.PlayVideo();
-        }
-
-        private void OnPause(object sender, EventArgs e)
-        {
-            video.PauseVideo();
+            // Reset video to start
+            video.SeekTo(0);
         }
     }
 }
