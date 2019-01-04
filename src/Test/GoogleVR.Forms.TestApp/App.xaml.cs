@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace GoogleVR.Forms.SampleApp
+namespace GoogleVR.Forms.TestApp
 {
     public partial class App : Application
     {

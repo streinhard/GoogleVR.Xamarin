@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace GoogleVR.Forms.SampleApp.iOS
+namespace GoogleVR.Forms.TestApp.iOS
 {
     public class Application
     {

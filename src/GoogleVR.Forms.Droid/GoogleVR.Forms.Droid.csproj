@@ -132,12 +132,6 @@
       <Project>{E3193E86-AA87-48AD-B3C4-C7A71402F450}</Project>
       <Name>GoogleVR.Forms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sample\GoogleVR.Android.BindingTest\GoogleVR.Android.BindingTest.csproj">
-      <IsAppExtension>true</IsAppExtension>
-      <Project>{006A8C58-950F-4362-8EA1-E82015A022CE}</Project>
-      <Name>GoogleVR.Android.BindingTest</Name>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\GoogleVR.Android.Common\GoogleVR.Android.Common.csproj">
       <Project>{DA157FD9-06A4-414F-A7DD-FA5A3B9E2420}</Project>
       <Name>GoogleVR.Android.Common</Name>

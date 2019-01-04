@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:gvr="clr-namespace:GoogleVR.Forms;assembly=GoogleVR.Forms"
-    x:Class="GoogleVR.Forms.SampleApp.VideoPage"
+    x:Class="GoogleVR.Forms.TestApp.VideoPage"
     Title="Video Widget">
      <StackLayout
         Spacing="0">

@@ -9,9 +9,9 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GoogleVR.Forms.SampleApp.iOS</RootNamespace>
+    <RootNamespace>GoogleVR.Forms.TestApp.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>GoogleVR.Forms.SampleApp.iOS</AssemblyName>
+    <AssemblyName>GoogleVR.Forms.TestApp.iOS</AssemblyName>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -152,10 +152,6 @@
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleVR.Forms.SampleApp\GoogleVR.Forms.SampleApp.csproj">
-      <Project>{F74CA6C9-FE3B-42ED-8DBF-E1349BAE4A4E}</Project>
-      <Name>GoogleVR.Forms.SampleApp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\GoogleVR.Forms.iOS\GoogleVR.Forms.iOS.csproj">
       <Project>{A62BDFBC-6A2D-429F-A168-C9115B394ED1}</Project>
       <Name>GoogleVR.Forms.iOS</Name>
@@ -167,6 +163,10 @@
     <ProjectReference Include="..\..\GoogleVR.iOS\GoogleVR.iOS.csproj">
       <Project>{C5695B7D-B62A-4284-83A1-E05760EA92FE}</Project>
       <Name>GoogleVR.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleVR.Forms.TestApp\GoogleVR.Forms.TestApp.csproj">
+      <Project>{BC822368-F0AC-4051-A3D5-8B41231387B8}</Project>
+      <Name>GoogleVR.Forms.TestApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

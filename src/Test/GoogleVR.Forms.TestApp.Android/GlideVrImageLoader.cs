@@ -8,7 +8,7 @@ using Com.Bumptech.Glide.Request.Transition;
 using Java.Lang;
 using Android.Graphics.Drawables;
 
-namespace GoogleVR.Forms.SampleApp.Droid
+namespace GoogleVR.Forms.TestApp.Droid
 {
     public class GlideVrImageLoader : IVrImageLoader
     {

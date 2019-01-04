@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace GoogleVR.Forms.SampleApp
+namespace GoogleVR.Forms.TestApp
 {
     public partial class MainPage : ContentPage
     {

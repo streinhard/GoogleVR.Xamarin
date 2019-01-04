@@ -3,10 +3,10 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 
-namespace GoogleVR.Forms.SampleApp.Droid
+namespace GoogleVR.Forms.TestApp.Droid
 {
     [Activity(
-        Label = "GoogleVR.Forms.SampleApp",
+        Label = "GoogleVR.Forms.TestApp",
         Theme = "@style/MainTheme",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation

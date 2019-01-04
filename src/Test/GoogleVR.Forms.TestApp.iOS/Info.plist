@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>GoogleVR.Forms.SampleApp</string>
+	<string>GoogleVR.Forms.TestApp</string>
 	<key>CFBundleIdentifier</key>
 	<string>bitforge.ch.GoogleVRFormsSampleApp</string>
 	<key>CFBundleVersion</key>

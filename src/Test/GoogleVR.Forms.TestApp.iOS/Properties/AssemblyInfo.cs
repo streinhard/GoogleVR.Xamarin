@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("GoogleVR.Forms.SampleApp.iOS")]
+[assembly: AssemblyTitle("GoogleVR.Forms.TestApp.iOS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GoogleVR.Forms.SampleApp.iOS")]
+[assembly: AssemblyProduct("GoogleVR.Forms.TestApp.iOS")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

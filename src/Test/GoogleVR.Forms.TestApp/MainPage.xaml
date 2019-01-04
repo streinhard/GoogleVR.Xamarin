@@ -2,8 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:GoogleVR.Forms.SampleApp"
-    x:Class="GoogleVR.Forms.SampleApp.MainPage"
+    xmlns:local="clr-namespace:GoogleVR.Forms.TestApp"
+    x:Class="GoogleVR.Forms.TestApp.MainPage"
     Title="Google VR">
     <StackLayout>
         
