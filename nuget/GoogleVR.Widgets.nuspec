@@ -9,6 +9,8 @@
     <summary>360 Video and Panorama widgets with support for Cardboard.</summary>
     <description>Xamarin binding of Google VR widgets for 360 Videos and Panoramas.</description>
     <iconUrl>https://vr.google.com/cardboard/images/hero-cardboard-download-mobile.jpg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright />
   </metadata>
   <files>
     <!-- Android -->

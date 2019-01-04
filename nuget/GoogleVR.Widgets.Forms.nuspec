@@ -9,8 +9,10 @@
     <summary>360 Video and Panorama widgets with support for Cardboard.</summary>
     <description>Google VR widgets (360 Videos and Panoramas) for Xamarin.Forms.</description>
     <iconUrl>https://vr.google.com/cardboard/images/hero-cardboard-download-mobile.jpg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright />
     <dependencies>
-      <group targetFramework="MonoAndroid">
+      <group targetFramework="MonoAndroid44">
         <dependency id="GoogleVR.Widgets" version="$version$" />
         <dependency id="Xamarin.Forms" version="3.4.0.1008975" />
       </group>
@@ -28,9 +30,11 @@
     <file src="../src/GoogleVR.Forms/bin/Release/netstandard2.0/GoogleVR.Forms.dll" target="lib/netstandard2.0" />
 
     <!-- Android -->
-    <file src="../src/GoogleVR.Forms.Droid/bin/Release/GoogleVR.Forms.Droid.dll" target="lib/MonoAndroid80" />
+    <file src="../src/GoogleVR.Forms.Droid/bin/Release/GoogleVR.Forms.Droid.dll" target="lib/MonoAndroid44" />
+    <file src="../src/GoogleVR.Forms.Droid/bin/Release/GoogleVR.Forms.dll" target="lib/MonoAndroid44" />
 
     <!-- iOS -->
     <file src="../src/GoogleVR.Forms.iOS/bin/Release/GoogleVR.Forms.iOS.dll" target="lib/Xamarin.iOS10" />
+    <file src="../src/GoogleVR.Forms.iOS/bin/Release/GoogleVR.Forms.dll" target="lib/Xamarin.iOS10" />
   </files>
 </package>

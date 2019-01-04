@@ -42,5 +42,8 @@ Thumbs.db
 # dotCover
 *.dotCover
 
+# Rider
+.idea
+
 Resource.designer.cs
 *.nupkg
