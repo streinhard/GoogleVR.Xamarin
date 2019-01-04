@@ -1,19 +1,23 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>GoogleVR.Widgets.Android</id>
-    <title>Google VR Widgets for Xamarin.Android</title>
+    <id>GoogleVR.Widgets</id>
+    <title>Google VR Widgets Binding for Xamarin.Android and Xamarin.iOS</title>
     <version>$version$</version>
     <authors>Stefan Reinhard</authors>
-    <owners>bitforge AG</owners>
+    <owners>Bitforge AG</owners>
     <summary>360 Video and Panorama widgets with support for Cardboard.</summary>
-    <description>Xamarin.Android binding of Google VR widgets for 360 Videos and Panoramas.</description>
+    <description>Xamarin binding of Google VR widgets for 360 Videos and Panoramas.</description>
     <iconUrl>https://vr.google.com/cardboard/images/hero-cardboard-download-mobile.jpg</iconUrl>
   </metadata>
   <files>
+    <!-- Android -->
     <file src="../src/GoogleVR.Android.Common/bin/Release/GoogleVR.Android.Common.dll" target="lib/MonoAndroid44" />
     <file src="../src/GoogleVR.Android.CommonWidget/bin/Release/GoogleVR.Android.CommonWidget.dll" target="lib/MonoAndroid44" />
     <file src="../src/GoogleVR.Android.PanoWidget/bin/Release/GoogleVR.Android.PanoWidget.dll" target="lib/MonoAndroid44" />
     <file src="../src/GoogleVR.Android.VideoWidget/bin/Release/GoogleVR.Android.VideoWidget.dll" target="lib/MonoAndroid44" />
+
+    <!-- iOS -->
+    <file src="../src/GoogleVR.iOS/bin/Release/GoogleVR.iOS.dll" target="lib/Xamarin.iOS10" />
   </files>
 </package>

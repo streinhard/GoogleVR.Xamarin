@@ -64,8 +64,8 @@ Task("pack")
       Version = VERSION,
       OutputDirectory = "./nuget/packages"
     };
-    NuGetPack("./nuget/GoogleVR.Widgets.Android.nuspec", nuGetPackSettings);
-    NuGetPack("./nuget/GoogleVR.Widgets.iOS.nuspec", nuGetPackSettings);
+    NuGetPack("./nuget/GoogleVR.Widgets.nuspec", nuGetPackSettings);
+    NuGetPack("./nuget/GoogleVR.Widgets.Forms.nuspec", nuGetPackSettings);
   });
 
 Task("Default").IsDependentOn("build");
