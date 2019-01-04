@@ -11,7 +11,7 @@ namespace GoogleVR.Forms
         public static BindableProperty SourceTypeProperty =
             BindableProperty.Create(nameof(SourceType), typeof(VrSourceType), typeof(VrVideo), VrSourceType.Mono);
 
-        public event EventHandler<NewVideoFrameEventArgs> PositionChanged;
+        public event EventHandler<PositionChangedEventArgs> PositionChanged;
         public event EventHandler Completed;
 
         internal IVrVideoRenderer Renderer { get; set; }
@@ -28,7 +28,7 @@ namespace GoogleVR.Forms
             set => SetValue(SourceTypeProperty, value);
         }
 
-        public void SeekTo(long position)
+        public void SeekTo(double position)
         {
             Renderer?.SeekTo(position);
         }
@@ -43,9 +43,9 @@ namespace GoogleVR.Forms
             Renderer?.PauseVideo();
         }
 
-        internal void OnNewFrame(long position)
+        internal void OnPositionChanged(double position)
         {
-            PositionChanged?.Invoke(this, new NewVideoFrameEventArgs
+            PositionChanged?.Invoke(this, new PositionChangedEventArgs
             {
                 Position = position
             });

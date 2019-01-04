@@ -81,7 +81,7 @@ namespace GoogleVR.Forms
             });
         }
 
-        internal void OnLoadSuccess(long? duration = null)
+        internal void OnLoadSuccess(double? duration = null)
         {
             LoadSuccess?.Invoke(this, new LoadSuccessEventArgs
             {

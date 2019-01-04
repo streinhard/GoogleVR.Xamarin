@@ -8,7 +8,7 @@ namespace GoogleVR.Forms
 
     public class LoadSuccessEventArgs : EventArgs
     {
-        public long? Duration;
+        public double? Duration;
     }
 
     public class LoadErrorEventArgs : EventArgs
@@ -16,13 +16,13 @@ namespace GoogleVR.Forms
         public string ErrorMessage;
     }
 
-    public class NewVideoFrameEventArgs : EventArgs
+    public class PositionChangedEventArgs : EventArgs
     {
-        public long Position;
+        public double Position;
     }
 
     public class SeekToEventArgs : EventArgs
     {
-        public long Position;
+        public double Position;
     }
 }

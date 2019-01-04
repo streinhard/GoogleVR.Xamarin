@@ -98,7 +98,7 @@ namespace GoogleVR.Forms
             Control?.Play();
         }
 
-        public void SeekTo(long position)
+        public void SeekTo(double position)
         {
             Control?.SeekTo(position);
         }
@@ -126,9 +126,7 @@ namespace GoogleVR.Forms
             {
                 if (_renderer != null)
                 {
-                    // TODO: Think about this cast
-                    var videoDuration = (long)_renderer.Control.Duration;
-                    _renderer.Element?.OnLoadSuccess(videoDuration);
+                    _renderer.Element?.OnLoadSuccess(_renderer.Control.Duration);
                 }
 
                 // Enable auto play on iOS
@@ -142,8 +140,7 @@ namespace GoogleVR.Forms
 
             public override void DidUpdatePosition(VideoView videoView, double position)
             {
-                // TODO: Think about this cast
-                _renderer?.Element?.OnNewFrame((long)position);
+                _renderer?.Element?.OnPositionChanged(position);
 
                 // Fire completed event when end of video is reached
                 if (_renderer.Control != null && Math.Abs(_renderer.Control.Duration - position) < 0.01)

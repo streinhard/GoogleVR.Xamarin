@@ -52,7 +52,7 @@ namespace GoogleVR.Forms.SampleApp
             System.Diagnostics.Debug.WriteLine($"Load error: {e.ErrorMessage}");
         }
 
-        private void OnPositionChanged(object sender, NewVideoFrameEventArgs e)
+        private void OnPositionChanged(object sender, PositionChangedEventArgs e)
         {
             // Ugly, but functional hack to prevent constant seeks
             _isSliderChangedFromUser = false;

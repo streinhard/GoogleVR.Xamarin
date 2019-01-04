@@ -107,9 +107,9 @@ namespace GoogleVR.Forms
             Control.PauseVideo();
         }
 
-        public void SeekTo(long position)
+        public void SeekTo(double position)
         {
-            Control?.SeekTo(position);
+            Control?.SeekTo((long)position);
         }
     }
 
@@ -154,7 +154,7 @@ namespace GoogleVR.Forms
             if (_renderer.Control == null) return;
 
             var position = _renderer.Control.CurrentPosition;
-            _renderer?.Element?.OnNewFrame(position);
+            _renderer?.Element?.OnPositionChanged(position);
         }
 
         public override void OnCompletion()

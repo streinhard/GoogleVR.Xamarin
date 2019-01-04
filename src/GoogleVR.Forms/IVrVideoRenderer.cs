@@ -6,6 +6,6 @@ namespace GoogleVR.Forms
     {
         void PlayVideo();
         void PauseVideo();
-        void SeekTo(long position);
+        void SeekTo(double position);
     }
 }
