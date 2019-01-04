@@ -71,9 +71,7 @@ namespace GoogleVR.Forms.SampleApp
 
         private void OnCompleted(object sender, EventArgs e)
         {
-            // Reset video to start
-            video.SeekTo(0);
-            video.PlayVideo();
+            System.Diagnostics.Debug.WriteLine("Video completed");
         }
     }
 }

@@ -11,6 +11,8 @@
             x:Name="video"
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand"
+            AutoPlay="true"
+            Loop="true"
             Clicked="OnClicked"
             DisplayModeChanged="OnDisplayModeChanged"
             LoadSuccess="OnLoadSuccess"

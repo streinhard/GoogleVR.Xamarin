@@ -140,6 +140,11 @@ namespace GoogleVR.Forms
         {
             if (_renderer.Control == null) return;
 
+            if (_renderer?.Element?.AutoPlay == false)
+            {
+                _renderer.Control.PauseVideo();
+            }
+
             var videoDuration = _renderer.Control.Duration;
             _renderer?.Element?.OnLoadSuccess(videoDuration);
         }
@@ -159,6 +164,11 @@ namespace GoogleVR.Forms
 
         public override void OnCompletion()
         {
+            if (_renderer?.Element?.Loop == true)
+            {
+                _renderer?.Control?.SeekTo(0);
+            }
+
             _renderer?.Element?.OnCompleted();
         }
     }

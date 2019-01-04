@@ -124,13 +124,16 @@ namespace GoogleVR.Forms
 
             public override void DidLoadContent(WidgetView widgetView, NSObject content)
             {
-                if (_renderer != null)
-                {
-                    _renderer.Element?.OnLoadSuccess(_renderer.Control.Duration);
-                }
+                _renderer.Element?.OnLoadSuccess(_renderer?.Control?.Duration);
 
-                // Enable auto play on iOS
+                // Start playing video, this initializes 360 degree view
                 _renderer?.Control?.Play();
+
+                // Stop immediately if auto play is disabled
+                if (_renderer?.Element?.AutoPlay == false)
+                {
+                    _renderer?.Control?.Pause();
+                }
             }
 
             public override void DidFailToLoadContent(WidgetView widgetView, NSObject content, string errorMessage)
@@ -142,9 +145,15 @@ namespace GoogleVR.Forms
             {
                 _renderer?.Element?.OnPositionChanged(position);
 
-                // Fire completed event when end of video is reached
+                // Check if video has reached the end
                 if (_renderer.Control != null && Math.Abs(_renderer.Control.Duration - position) < 0.01)
                 {
+                    if (_renderer?.Element?.Loop == true)
+                    {
+                        _renderer?.Control?.SeekTo(0);
+                        _renderer?.Control?.Play();
+                    }
+
                     _renderer?.Element?.OnCompleted();
                 }
             }
