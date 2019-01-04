@@ -7,5 +7,6 @@ namespace GoogleVR.Forms
         void PlayVideo();
         void PauseVideo();
         void SeekTo(double position);
+        void SetVolume(float volume);
     }
 }

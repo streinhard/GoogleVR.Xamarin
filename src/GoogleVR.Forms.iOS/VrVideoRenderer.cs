@@ -103,6 +103,12 @@ namespace GoogleVR.Forms
             Control?.SeekTo(position);
         }
 
+        public void SetVolume(float volume)
+        {
+            if (Control == null) return;
+            Control.Volume = volume;
+        }
+
         private class VideoDelegate : VideoViewDelegate
         {
             private readonly VrVideoRenderer _renderer;

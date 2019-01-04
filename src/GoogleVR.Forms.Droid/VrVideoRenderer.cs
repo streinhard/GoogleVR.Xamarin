@@ -111,6 +111,11 @@ namespace GoogleVR.Forms
         {
             Control?.SeekTo((long)position);
         }
+
+        public void SetVolume(float volume)
+        {
+            Control?.SetVolume(volume);
+        }
     }
 
     class VideoEventListener : VrVideoEventListener

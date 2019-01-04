@@ -51,6 +51,11 @@ namespace GoogleVR.Forms
             Renderer?.SeekTo(position);
         }
 
+        public void SetVolume(float volume)
+        {
+            Renderer?.SetVolume(volume);
+        }
+
         public void PlayVideo()
         {
             Renderer?.PlayVideo();
