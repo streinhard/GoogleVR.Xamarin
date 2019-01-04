@@ -164,6 +164,10 @@
       <Project>{E3193E86-AA87-48AD-B3C4-C7A71402F450}</Project>
       <Name>GoogleVR.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GoogleVR.iOS\GoogleVR.iOS.csproj">
+      <Project>{C5695B7D-B62A-4284-83A1-E05760EA92FE}</Project>
+      <Name>GoogleVR.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\test_1080_stereo.mp4" />

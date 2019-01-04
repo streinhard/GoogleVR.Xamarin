@@ -59,9 +59,6 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.3.4.0.1008975\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleVR.iOS">
-      <HintPath>..\packages\GoogleVR.Widgets.iOS.1.170.0\lib\Xamarin.iOS10\GoogleVR.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +73,10 @@
     <ProjectReference Include="..\GoogleVR.Forms\GoogleVR.Forms.csproj">
       <Project>{E3193E86-AA87-48AD-B3C4-C7A71402F450}</Project>
       <Name>GoogleVR.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleVR.iOS\GoogleVR.iOS.csproj">
+      <Project>{C5695B7D-B62A-4284-83A1-E05760EA92FE}</Project>
+      <Name>GoogleVR.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
