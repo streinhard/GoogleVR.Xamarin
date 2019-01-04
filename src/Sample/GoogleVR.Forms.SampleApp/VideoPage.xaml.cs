@@ -73,6 +73,7 @@ namespace GoogleVR.Forms.SampleApp
         {
             // Reset video to start
             video.SeekTo(0);
+            video.PlayVideo();
         }
     }
 }

@@ -70,6 +70,7 @@
     <Compile Include="VrImageLoader.cs" />
     <Compile Include="IVrImageLoader.cs" />
     <Compile Include="DefaultImageLoader.cs" />
+    <Compile Include="VrVideoRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoogleVR.Forms\GoogleVR.Forms.csproj">
